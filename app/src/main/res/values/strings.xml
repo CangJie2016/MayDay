@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MayDay</string>
+
+    <string name="time_line_goal">本月目标：%1$s元</string>
+    <string name="time_line_cost">本月花销：%1$s元</string>
+
+</resources>
