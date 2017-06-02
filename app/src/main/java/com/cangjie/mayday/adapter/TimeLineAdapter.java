@@ -1,6 +1,7 @@
 package com.cangjie.mayday.adapter;
 
-import android.content.Context;
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,8 +9,13 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.anye.greendao.gen.BillTypeDao;
+import com.cangjie.data.entity.BillType;
+import com.cangjie.mayday.MyApplication;
 import com.cangjie.mayday.R;
+import com.cangjie.mayday.domain.PerCost;
 import com.cangjie.mayday.domain.TimeLineDayElement;
+import com.cangjie.mayday.ui.AddBillActivity;
 
 import java.util.List;
 
@@ -22,15 +28,19 @@ import butterknife.ButterKnife;
 
 public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.TimeLineViewHolder> {
     private List<TimeLineDayElement> mData;
-    private Context mContext;
+    private Activity mActivity;
     private OnTimeLineItemClickListener mListener;
     private final LayoutInflater mLayoutInflater;
+    private final List<BillType> mBillTypeList;
 
-    public TimeLineAdapter(Context context, List<TimeLineDayElement> list, OnTimeLineItemClickListener listener){
-        this.mContext = context;
+    public TimeLineAdapter(Activity activity, List<TimeLineDayElement> list, OnTimeLineItemClickListener listener){
+        this.mActivity = activity;
         this.mListener = listener;
         this.mData = list;
-        mLayoutInflater = LayoutInflater.from(context);
+        mLayoutInflater = LayoutInflater.from(activity);
+
+        BillTypeDao mBillTypeDao = MyApplication.getInstances().getDaoSession().getBillTypeDao();
+        mBillTypeList = mBillTypeDao.loadAll();
     }
 
     @Override
@@ -41,9 +51,38 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.TimeLi
 
     @Override
     public void onBindViewHolder(TimeLineViewHolder holder, int position) {
-        TimeLineDayElement element = mData.get(position);
-        holder.tv_date.setText(element.getDate());
+        final TimeLineDayElement element = mData.get(position);
+        holder.tv_date.setText(element.getDate().substring(4));
+        double sumMoney = 0;
+        for (final PerCost perCost : element.getCostList()){
+            View view = mLayoutInflater.inflate(R.layout.item_time_line2,holder.ll_container,false);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(mActivity, AddBillActivity.class);
+                    intent.putExtra("perCost", perCost);
+                    mActivity.startActivity(intent);
+                }
+            });
+            TextView tv_type = (TextView) view.findViewById(R.id.tv_type);
+            TextView tv_money = (TextView) view.findViewById(R.id.tv_money);
+            String typeName = typeName(perCost.getCostType());
+            tv_type.setText(typeName);
+            tv_money.setText(String.valueOf(perCost.getCostMoney()));
+            sumMoney += perCost.getCostMoney();
+            holder.ll_container.addView(view);
+        }
+        holder.tv_sum_money.setText(String.valueOf(sumMoney));
     }
+
+    private String typeName(int billType) {
+        for(BillType type : mBillTypeList){
+            if (type.getTypeId() == billType)
+                return type.getTypeName();
+        }
+        return null;
+    }
+
 
     @Override
     public int getItemCount() {
@@ -57,6 +96,8 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.TimeLi
     public class TimeLineViewHolder extends RecyclerView.ViewHolder{
         @Bind(R.id.tv_date)
         TextView tv_date;
+        @Bind(R.id.tv_sum_money)
+        TextView tv_sum_money;
         @Bind(R.id.ll_container)
         LinearLayout ll_container;
         public TimeLineViewHolder(View itemView) {

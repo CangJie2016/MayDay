@@ -29,6 +29,7 @@ public class BillDao extends AbstractDao<Bill, Long> {
         public final static Property BillType = new Property(2, int.class, "billType", false, "BILL_TYPE");
         public final static Property Date = new Property(3, java.util.Date.class, "date", false, "DATE");
         public final static Property IsDele = new Property(4, int.class, "isDele", false, "IS_DELE");
+        public final static Property Remarks = new Property(5, String.class, "remarks", false, "REMARKS");
     }
 
 
@@ -48,7 +49,8 @@ public class BillDao extends AbstractDao<Bill, Long> {
                 "\"MONEY\" REAL," + // 1: money
                 "\"BILL_TYPE\" INTEGER NOT NULL ," + // 2: billType
                 "\"DATE\" INTEGER," + // 3: date
-                "\"IS_DELE\" INTEGER NOT NULL );"); // 4: isDele
+                "\"IS_DELE\" INTEGER NOT NULL ," + // 4: isDele
+                "\"REMARKS\" TEXT);"); // 5: remarks
     }
 
     /** Drops the underlying database table. */
@@ -77,6 +79,11 @@ public class BillDao extends AbstractDao<Bill, Long> {
             stmt.bindLong(4, date.getTime());
         }
         stmt.bindLong(5, entity.getIsDele());
+ 
+        String remarks = entity.getRemarks();
+        if (remarks != null) {
+            stmt.bindString(6, remarks);
+        }
     }
 
     @Override
@@ -99,6 +106,11 @@ public class BillDao extends AbstractDao<Bill, Long> {
             stmt.bindLong(4, date.getTime());
         }
         stmt.bindLong(5, entity.getIsDele());
+ 
+        String remarks = entity.getRemarks();
+        if (remarks != null) {
+            stmt.bindString(6, remarks);
+        }
     }
 
     @Override
@@ -113,7 +125,8 @@ public class BillDao extends AbstractDao<Bill, Long> {
             cursor.isNull(offset + 1) ? null : cursor.getDouble(offset + 1), // money
             cursor.getInt(offset + 2), // billType
             cursor.isNull(offset + 3) ? null : new java.util.Date(cursor.getLong(offset + 3)), // date
-            cursor.getInt(offset + 4) // isDele
+            cursor.getInt(offset + 4), // isDele
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5) // remarks
         );
         return entity;
     }
@@ -125,6 +138,7 @@ public class BillDao extends AbstractDao<Bill, Long> {
         entity.setBillType(cursor.getInt(offset + 2));
         entity.setDate(cursor.isNull(offset + 3) ? null : new java.util.Date(cursor.getLong(offset + 3)));
         entity.setIsDele(cursor.getInt(offset + 4));
+        entity.setRemarks(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
      }
     
     @Override

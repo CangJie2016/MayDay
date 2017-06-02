@@ -22,14 +22,16 @@ public class Bill{
     private int billType;
     private java.util.Date date;
     private int isDele; // 1 dele  0 normal
-    @Generated(hash = 79910092)
+    private String remarks;
+    @Generated(hash = 77731742)
     public Bill(Long id, Double money, int billType, java.util.Date date,
-            int isDele) {
+            int isDele, String remarks) {
         this.id = id;
         this.money = money;
         this.billType = billType;
         this.date = date;
         this.isDele = isDele;
+        this.remarks = remarks;
     }
     @Generated(hash = 1399599325)
     public Bill() {
@@ -64,4 +66,11 @@ public class Bill{
     public void setIsDele(int isDele) {
         this.isDele = isDele;
     }
+    public String getRemarks() {
+        return this.remarks;
+    }
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+    
 }

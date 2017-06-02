@@ -5,14 +5,9 @@ import com.anye.greendao.gen.BillTypeDao;
 import com.cangjie.basetool.mvp.BasePresenter;
 import com.cangjie.basetool.utils.SpUtils;
 import com.cangjie.data.db.DbInit;
-import com.cangjie.data.entity.Bill;
 import com.cangjie.mayday.Constant;
 import com.cangjie.mayday.MyApplication;
-import com.cangjie.mayday.adapter.TimeLineAdapter2;
 import com.cangjie.mayday.presenter.view.MainView;
-import com.cangjie.mayday.ui.MainActivity;
-
-import java.util.List;
 
 public class MainPresenter extends BasePresenter<MainView> {
 

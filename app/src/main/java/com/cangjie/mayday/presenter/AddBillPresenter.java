@@ -2,15 +2,12 @@ package com.cangjie.mayday.presenter;
 
 import com.anye.greendao.gen.BillDao;
 import com.anye.greendao.gen.BillTypeDao;
-import com.anye.greendao.gen.UserDao;
 import com.cangjie.basetool.mvp.BasePresenter;
-import com.cangjie.basetool.utils.SpUtils;
-import com.cangjie.data.db.DbInit;
 import com.cangjie.data.entity.Bill;
 import com.cangjie.data.entity.BillType;
-import com.cangjie.mayday.Constant;
 import com.cangjie.mayday.MyApplication;
 import com.cangjie.mayday.adapter.BillTypeAdapter;
+import com.cangjie.mayday.domain.PerCost;
 import com.cangjie.mayday.presenter.view.AddBillView;
 import com.cangjie.mayday.ui.AddBillActivity;
 
@@ -38,13 +35,25 @@ public class AddBillPresenter extends BasePresenter<AddBillView> {
         mvpView.setBillTypeAdapter(billTypeAdapter);
     }
 
-    public void addBill(Double aDouble) {
+    public void addBill(PerCost currentPerCost) {
         Bill bill = new Bill();
-        bill.setMoney(aDouble);
+        bill.setMoney(currentPerCost.getCostMoney());
+        bill.setRemarks(currentPerCost.getRemark());
         bill.setDate(new Date());
         bill.setBillType(billTypeAdapter.getCurrentTypeId());
         long insert = mBillDao.insert(bill);
         if (insert != -1)
             mvpView.addBillSuccess();
+    }
+
+    public void alterBill(PerCost currentPerCost) {
+        Bill bill = new Bill();
+        bill.setId(currentPerCost.getId());
+        bill.setMoney(currentPerCost.getCostMoney());
+        bill.setRemarks(currentPerCost.getRemark());
+        bill.setDate(currentPerCost.getDate());
+        bill.setBillType(billTypeAdapter.getCurrentTypeId());
+        mBillDao.update(bill);
+        mvpView.addBillSuccess();
     }
 }

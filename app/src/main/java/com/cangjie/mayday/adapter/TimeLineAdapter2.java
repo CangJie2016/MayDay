@@ -29,7 +29,6 @@ import butterknife.ButterKnife;
  */
 
 public class TimeLineAdapter2 extends RecyclerView.Adapter<TimeLineAdapter2.TimeLineViewHolder> {
-    private final BillTypeDao mBillTypeDao;
     private List<Bill> mData;
     private Context mActivity;
     private OnTimeLineItemClickListener mListener;
@@ -44,7 +43,7 @@ public class TimeLineAdapter2 extends RecyclerView.Adapter<TimeLineAdapter2.Time
         mLayoutInflater = LayoutInflater.from(mActivity);
         mSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.CHINA);
 
-        mBillTypeDao = MyApplication.getInstances().getDaoSession().getBillTypeDao();
+        BillTypeDao mBillTypeDao = MyApplication.getInstances().getDaoSession().getBillTypeDao();
         mBillTypeList = mBillTypeDao.loadAll();
     }
 
@@ -96,7 +95,7 @@ public class TimeLineAdapter2 extends RecyclerView.Adapter<TimeLineAdapter2.Time
         TextView tv_type;
         @Bind(R.id.tv_money)
         TextView tv_money;
-        @Bind(R.id.container)
+        @Bind(R.id.ll_container)
         LinearLayout container;
         public TimeLineViewHolder(View itemView) {
             super(itemView);

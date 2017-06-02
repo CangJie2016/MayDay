@@ -17,9 +17,7 @@ import com.cangjie.basetool.view.recycle_view.DividerItemDecoration;
 import com.cangjie.mayday.R;
 import com.cangjie.mayday.adapter.LoadMoreAdapterWrapper;
 import com.cangjie.mayday.adapter.TimeLineAdapter;
-import com.cangjie.mayday.adapter.TimeLineAdapter2;
 import com.cangjie.mayday.presenter.TimeLinePresenter;
-import com.cangjie.mayday.presenter.view.AddBillView;
 import com.cangjie.mayday.presenter.view.TimeLineView;
 
 import butterknife.Bind;
@@ -101,9 +99,9 @@ public class TimeLineFragment extends PresenterFragment<TimeLinePresenter> imple
     }
 
     private void initData() {
+        mPresenter.loadMoneyTimeLine();
         mPresenter.loadCurrentMonthGoal();
         mPresenter.loadCurrentMonthCost();
-        mPresenter.loadMoneyTimeLine();
     }
 
     @Override
@@ -121,8 +119,8 @@ public class TimeLineFragment extends PresenterFragment<TimeLinePresenter> imple
     }
 
     @Override
-    public void currentMonthCost(String cost) {
-        tv_cost.setText(getString(R.string.time_line_cost, cost));
+    public void currentMonthCost(double cost) {
+        tv_cost.setText(getString(R.string.time_line_cost, String.valueOf(cost)));
     }
 
     @Override
@@ -131,7 +129,7 @@ public class TimeLineFragment extends PresenterFragment<TimeLinePresenter> imple
     }
 
     @Override
-    public void moneyTimeLineData(TimeLineAdapter2 list) {
+    public void moneyTimeLineData(TimeLineAdapter list) {
         rv_timeline.setAdapter(list);
     }
 }

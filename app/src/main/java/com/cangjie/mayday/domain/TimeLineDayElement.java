@@ -35,43 +35,4 @@ public class TimeLineDayElement {
         this.costList = costList;
     }
 
-    public class PerCost{
-        private int costType;// 消费类型
-        private String costMoney; // 消费金额
-        private String time; // 记录时间
-        private String remark; //备注
-
-        public int getCostType() {
-            return costType;
-        }
-
-        public void setCostType(int costType) {
-            this.costType = costType;
-        }
-
-        public String getCostMoney() {
-            return costMoney;
-        }
-
-        public void setCostMoney(String costMoney) {
-            this.costMoney = costMoney;
-        }
-
-        public String getTime() {
-            return time;
-        }
-
-        public void setTime(String time) {
-            this.time = time;
-        }
-
-        public String getRemark() {
-            return remark;
-        }
-
-        public void setRemark(String remark) {
-            this.remark = remark;
-        }
-    }
-
 }

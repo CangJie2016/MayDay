@@ -6,11 +6,9 @@ import android.view.View;
 import android.widget.RadioButton;
 
 import com.cangjie.basetool.mvp.base.PresenterActivity;
-import com.cangjie.basetool.utils.ToastHelper;
 import com.cangjie.basetool.view.lazy_viewpager.CustomViewPager;
 import com.cangjie.basetool.view.lazy_viewpager.MyFragmentViewPagerAdapter;
 import com.cangjie.mayday.R;
-import com.cangjie.mayday.adapter.TimeLineAdapter2;
 import com.cangjie.mayday.presenter.MainPresenter;
 import com.cangjie.mayday.presenter.view.MainView;
 

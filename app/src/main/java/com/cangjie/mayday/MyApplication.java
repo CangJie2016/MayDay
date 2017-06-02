@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.anye.greendao.gen.DaoMaster;
 import com.anye.greendao.gen.DaoSession;
 import com.cangjie.basetool.utils.DebugLog;
+import com.facebook.stetho.Stetho;
 
 /**
  * author：CangJie on 2016/9/28 14:45
@@ -26,6 +27,7 @@ public class MyApplication extends Application {
         this.mContext = this;
         instances = this;
         setDatabase();
+        Stetho.initializeWithDefaults(this);
     }
     public static MyApplication getInstances(){
         return instances;

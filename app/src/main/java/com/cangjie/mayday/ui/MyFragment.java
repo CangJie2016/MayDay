@@ -1,28 +1,15 @@
 package com.cangjie.mayday.ui;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.cangjie.basetool.mvp.base.BaseHeadFragment;
-import com.cangjie.basetool.mvp.base.PresenterFragment;
 import com.cangjie.basetool.utils.ToastHelper;
-import com.cangjie.basetool.view.recycle_view.DividerItemDecoration;
 import com.cangjie.mayday.R;
-import com.cangjie.mayday.adapter.LoadMoreAdapterWrapper;
-import com.cangjie.mayday.adapter.TimeLineAdapter;
-import com.cangjie.mayday.adapter.TimeLineAdapter2;
-import com.cangjie.mayday.presenter.TimeLinePresenter;
-import com.cangjie.mayday.presenter.view.TimeLineView;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
