@@ -14,7 +14,7 @@
         android:minWidth="@dimen/head_height"
         android:layout_height="match_parent"
         android:background="@color/transparent"
-        android:drawableLeft="@mipmap/fanhui"
+        android:drawableLeft="@drawable/btn_head_back"
         android:text=""
         android:textSize="@dimen/font_medium"
         android:paddingLeft="16dp"

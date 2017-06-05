@@ -70,11 +70,11 @@ public class TimeLineFragment extends PresenterFragment<TimeLinePresenter> imple
         rootView = setContentView(rootView);
         ButterKnife.bind(this, rootView);
         initData();
-        showTitle("首页");
-        showRightImageButton(R.mipmap.ic_launcher, new View.OnClickListener() {
+        showTitle("账单");
+        showRightImageButton(R.drawable.btn_main_goal, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), AddBillActivity.class);
+                Intent intent = new Intent(getActivity(), SetGoalActivity.class);
                 startActivity(intent);
             }
         });

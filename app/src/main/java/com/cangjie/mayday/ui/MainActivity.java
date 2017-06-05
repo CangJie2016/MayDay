@@ -1,8 +1,10 @@
 package com.cangjie.mayday.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RadioButton;
 
 import com.cangjie.basetool.mvp.base.PresenterActivity;
@@ -24,12 +26,14 @@ public class MainActivity extends PresenterActivity<MainPresenter> implements Ma
     @Bind(R.id.vp_main)
     public CustomViewPager mViewPager;
 
-    @Bind(R.id.rb_buy_ticket)
-    public RadioButton rb_buy_ticket;
-    @Bind(R.id.rb_riding)
-    public RadioButton rb_riding;
-    @Bind(R.id.rb_my)
-    public RadioButton rb_my;
+    @Bind(R.id.rb_chart)
+    public RadioButton rb_chart;
+    @Bind(R.id.rb_bill)
+    public RadioButton rb_bill;
+    @Bind(R.id.rb_more)
+    public RadioButton rb_more;
+    @Bind(R.id.btn_pencil)
+    public Button btn_pencil;
 
     @Override
     protected MainPresenter createPresenter() {
@@ -64,23 +68,42 @@ public class MainActivity extends PresenterActivity<MainPresenter> implements Ma
         mViewPager.setPagingEnabled(false);
         mViewPager.setAdapter(mAdapter);
         mViewPager.setCurrentItem(1);
-        rb_riding.setChecked(true);
+        rb_bill.setChecked(true);
     }
 
-    @OnClick({R.id.rb_buy_ticket, R.id.rb_riding,R.id.rb_my})
+    @OnClick({R.id.rb_chart, R.id.rb_bill,R.id.rb_more})
     public void onItemClick(View view){
         switch (view.getId()){
-            case R.id.rb_buy_ticket:
+            case R.id.rb_chart:
+                hidePencilBtn();
                 mViewPager.setCurrentItem(0);
                 break;
 
-            case R.id.rb_riding:
+            case R.id.rb_bill:
+                showPencilBtn();
                 mViewPager.setCurrentItem(1);
                 break;
 
-            case R.id.rb_my:
+            case R.id.rb_more:
+                hidePencilBtn();
                 mViewPager.setCurrentItem(2);
                 break;
         }
     }
+
+    public void showPencilBtn(){
+        btn_pencil.setVisibility(View.VISIBLE);
+        rb_bill.setVisibility(View.GONE);
+    }
+    public void hidePencilBtn(){
+        btn_pencil.setVisibility(View.GONE);
+        rb_bill.setVisibility(View.VISIBLE);
+    }
+
+    @OnClick(R.id.btn_pencil)
+    public void clickPencil(){
+        Intent intent = new Intent(mContext, AddBillActivity.class);
+        startActivity(intent);
+    }
+
 }

@@ -37,7 +37,7 @@ public class MyFragment extends BaseHeadFragment {
         rootView = inflater.inflate(R.layout.fragment_my, container, false);
         rootView = setContentView(rootView);
         ButterKnife.bind(this, rootView);
-        showTitle("我的");
+        showTitle("更多");
         return rootView;
     }
     @OnClick({R.id.ll_user_info, R.id.ll_credits_exchange,R.id.ll_activity,R.id.ll_auto,R.id.ll_version,R.id.ll_suggest})

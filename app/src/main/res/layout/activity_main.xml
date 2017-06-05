@@ -16,31 +16,37 @@
     <RadioGroup
         android:id="@+id/rg_main"
         android:layout_width="fill_parent"
-        android:layout_height="54dp"
+        android:layout_height="50dp"
         android:layout_gravity="bottom"
         android:background="@color/main_tab_background"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <RadioButton
-            android:id="@+id/rb_buy_ticket"
+            android:id="@+id/rb_chart"
             style="@style/main_tab_bottom"
-            android:checked="false"
-            android:drawableTop="@drawable/rb_main_tab_query"
-            android:text="查询" />
+            android:drawableTop="@drawable/rb_main_tab_chart"/>
 
         <RadioButton
-            android:id="@+id/rb_riding"
+            android:id="@+id/rb_bill"
             style="@style/main_tab_bottom"
-            android:drawableTop="@drawable/rb_main_tab_riding"
-            android:text="乘车" />
+            android:visibility="gone"
+            android:drawableTop="@drawable/rb_main_tab_bill" />
 
-
+        <Button
+            android:id="@+id/btn_pencil"
+            android:background="@drawable/rb_main_tab_backgroud"
+            android:paddingBottom="@dimen/margin_tiny"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingTop="4dp"
+            android:visibility="visible"
+            android:drawableTop="@mipmap/record" />
         <RadioButton
-            android:id="@+id/rb_my"
+            android:id="@+id/rb_more"
             style="@style/main_tab_bottom"
-            android:drawableTop="@drawable/rb_main_tab_mine"
-            android:text="我的"/>
+            android:drawableTop="@drawable/rb_main_tab_more"/>
 
     </RadioGroup>
 </LinearLayout>
