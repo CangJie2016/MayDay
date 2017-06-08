@@ -6,34 +6,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.cangjie.mayday.ui.AddBillActivity">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="请选择类型"/>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_bill_type"
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"/>
     <EditText
-        android:id="@+id/et_money"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"/>
-    <EditText
         android:id="@+id/et_remarks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:hint="备注信息"/>
-    <EditText
-        android:id="@+id/et_time"
+    <com.cangjie.mayday.view.CustomSoftKeyboard
+        android:id="@+id/custom_kb"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="时间"
-        android:inputType="number"/>
-    <Button
-        android:id="@+id/btn_add"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="添加"/>
+        android:layout_height="wrap_content"/>
 </LinearLayout>

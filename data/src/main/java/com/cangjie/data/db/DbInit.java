@@ -13,22 +13,23 @@ import java.util.List;
 public class DbInit {
     public static void init(BillTypeDao mBillTypeDao){
         List<BillType> list = new ArrayList<BillType>();
-        BillType mBillType = new BillType();
-        mBillType.setTypeId(1);
-        mBillType.setTypeName("买菜");
-        BillType mBillType2 = new BillType();
-        mBillType2.setTypeId(2);
-        mBillType2.setTypeName("零食");
-        BillType mBillType3 = new BillType();
-        mBillType3.setTypeId(3);
-        mBillType3.setTypeName("超市");
-        BillType mBillType4 = new BillType();
-        mBillType4.setTypeId(4);
-        mBillType4.setTypeName("话费");
-        list.add(mBillType);
-        list.add(mBillType2);
-        list.add(mBillType3);
-        list.add(mBillType4);
+        list.add(new BillType(1, "用餐"));
+        list.add(new BillType(2, "交通"));
+        list.add(new BillType(3, "服饰"));
+        list.add(new BillType(4, "丽人"));
+        list.add(new BillType(5, "日用品"));
+        list.add(new BillType(6, "娱乐"));
+        list.add(new BillType(7, "食材"));
+        list.add(new BillType(8, "零食"));
+        list.add(new BillType(9, "酒水"));
+        list.add(new BillType(10, "住房"));
+        list.add(new BillType(11, "通讯"));
+        list.add(new BillType(12, "家居"));
+        list.add(new BillType(13, "人情"));
+        list.add(new BillType(14, "学习"));
+        list.add(new BillType(15, "医疗"));
+        list.add(new BillType(16, "旅游"));
+        list.add(new BillType(17, "数码"));
         mBillTypeDao.insertInTx(list);//添加一个
     }
 }

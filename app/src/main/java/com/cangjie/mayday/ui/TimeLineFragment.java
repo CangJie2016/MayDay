@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,8 @@ import com.cangjie.mayday.presenter.view.TimeLineView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+
+import static android.R.id.list;
 
 /**
  * Created by 李振强 on 2017/5/26.
@@ -40,7 +43,8 @@ public class TimeLineFragment extends PresenterFragment<TimeLinePresenter> imple
     private TimeLineAdapter adapter;
     private LoadMoreAdapterWrapper mAdapter;
     private LoadMoreAdapterWrapper.ILoadCallback mLoadCallback;
-    public static final String ACTION = "com.cangjie.mayday.refresh";
+    public static final String TIMELINE_ACTION = "com.cangjie.mayday.timeline_refresh";
+    public static final String GOAL_ACTION = "com.cangjie.mayday.goal.refresh";
     private BroadcastReceiver refreshReceiver = new BroadcastReceiver(){
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -87,7 +91,8 @@ public class TimeLineFragment extends PresenterFragment<TimeLinePresenter> imple
 
     private void initRefreshBroadcast() {
         IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(ACTION);
+        intentFilter.addAction(TIMELINE_ACTION);
+        intentFilter.addAction(GOAL_ACTION);
         getActivity().registerReceiver(refreshReceiver, intentFilter);
     }
 
@@ -124,8 +129,13 @@ public class TimeLineFragment extends PresenterFragment<TimeLinePresenter> imple
     }
 
     @Override
-    public void currentMonthGoal(String goal) {
-        tv_goal.setText(getString(R.string.time_line_goal, goal));
+    public void currentMonthGoal(String goalName, String goalNum) {
+        if (TextUtils.isEmpty(goalName) || TextUtils.isEmpty(goalNum)){
+            tv_goal.setText(getString(R.string.time_line_set_goal));
+        }else{
+            String goal = goalName + "-" + goalNum;
+            tv_goal.setText(getString(R.string.time_line_goal, goal));
+        }
     }
 
     @Override

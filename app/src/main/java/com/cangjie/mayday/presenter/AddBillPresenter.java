@@ -56,4 +56,14 @@ public class AddBillPresenter extends BasePresenter<AddBillView> {
         mBillDao.update(bill);
         mvpView.addBillSuccess();
     }
+
+    public void setCurrentCostType(int costType) {
+        billTypeAdapter.setCurrentCostType(costType);
+        billTypeAdapter.notifyDataSetChanged();
+    }
+
+    public void deleteRecord(long id) {
+        mBillDao.deleteByKey(id);
+        mvpView.deleteSuccess();
+    }
 }

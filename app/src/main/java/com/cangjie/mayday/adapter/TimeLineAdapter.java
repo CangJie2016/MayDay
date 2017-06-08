@@ -52,7 +52,8 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.TimeLi
     @Override
     public void onBindViewHolder(TimeLineViewHolder holder, int position) {
         final TimeLineDayElement element = mData.get(position);
-        holder.tv_date.setText(element.getDate().substring(4));
+        String monthDay = element.getDate().substring(4);
+        holder.tv_date.setText(Integer.valueOf(monthDay.substring(0,2))+"月" + Integer.valueOf(monthDay.substring(2,4))+"日");
         double sumMoney = 0;
         for (final PerCost perCost : element.getCostList()){
             View view = mLayoutInflater.inflate(R.layout.item_time_line2,holder.ll_container,false);
@@ -68,11 +69,12 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.TimeLi
             TextView tv_money = (TextView) view.findViewById(R.id.tv_money);
             String typeName = typeName(perCost.getCostType());
             tv_type.setText(typeName);
-            tv_money.setText(String.valueOf(perCost.getCostMoney()));
+            tv_money.setText(String.valueOf(perCost.getCostMoney()) + "元");
             sumMoney += perCost.getCostMoney();
             holder.ll_container.addView(view);
+
         }
-        holder.tv_sum_money.setText(String.valueOf(sumMoney));
+        holder.tv_sum_money.setText(String.valueOf(sumMoney) + "元");
     }
 
     private String typeName(int billType) {

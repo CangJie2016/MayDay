@@ -7,4 +7,6 @@ public interface AddBillView extends BaseView {
     void setBillTypeAdapter(BillTypeAdapter billTypeAdapter);
 
     void addBillSuccess();
+
+    void deleteSuccess();
 }

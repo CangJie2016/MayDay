@@ -10,7 +10,7 @@ import com.cangjie.mayday.adapter.TimeLineAdapter;
 public interface TimeLineView extends BaseView{
     void currentMonthCost(double cost);
 
-    void currentMonthGoal(String goal);
+    void currentMonthGoal(String goal, String goalNum);
 
     void moneyTimeLineData(TimeLineAdapter list);
 }

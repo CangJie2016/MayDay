@@ -5,12 +5,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.cangjie.data.entity.BillType;
 import com.cangjie.mayday.R;
-import com.cangjie.mayday.domain.TimeLineDayElement;
 
 import java.util.List;
 
@@ -44,7 +42,7 @@ public class BillTypeAdapter extends RecyclerView.Adapter<BillTypeAdapter.BillTy
     public void onBindViewHolder(BillTypeViewHolder holder, int position) {
         final BillType element = mData.get(position);
         if (element.getTypeId() == currentType)
-            holder.tv_name.setBackgroundColor(mContext.getResources().getColor(R.color.btn_orange_light));
+            holder.tv_name.setBackgroundColor(mContext.getResources().getColor(R.color.theme_color_2));
         else
             holder.tv_name.setBackgroundColor(mContext.getResources().getColor(R.color.white));
 
@@ -65,6 +63,10 @@ public class BillTypeAdapter extends RecyclerView.Adapter<BillTypeAdapter.BillTy
     @Override
     public int getItemCount() {
         return mData.size();
+    }
+
+    public void setCurrentCostType(int costType) {
+        currentType = costType;
     }
 
 

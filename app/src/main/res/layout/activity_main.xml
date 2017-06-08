@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@mipmap/default_bg"
     tools:context="com.cangjie.mayday.ui.MainActivity">
 
     <com.cangjie.basetool.view.lazy_viewpager.CustomViewPager

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="240dp"
+    android:orientation="vertical"
+    tools:context="com.cangjie.mayday.ui.AddBillActivity">
+
+    <EditText
+        android:id="@+id/et_money"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:focusable="false"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btn_soft_kb_7"
+                style="@style/soft_keyboard_btn"
+                android:text="7"/>
+
+            <Button
+                android:id="@+id/btn_soft_kb_8"
+                style="@style/soft_keyboard_btn"
+                android:text="8"/>
+
+            <Button
+                android:id="@+id/btn_soft_kb_9"
+                style="@style/soft_keyboard_btn"
+                android:text="9"/>
+            <Button
+                android:id="@+id/btn_soft_kb_back"
+                style="@style/soft_keyboard_btn"
+                android:text="back"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_soft_kb_4"
+                style="@style/soft_keyboard_btn"
+                android:text="4"/>
+
+            <Button
+                android:id="@+id/btn_soft_kb_5"
+                style="@style/soft_keyboard_btn"
+                android:text="5"/>
+
+            <Button
+                android:id="@+id/btn_soft_kb_6"
+                style="@style/soft_keyboard_btn"
+                android:text="6"/>
+            <Button
+                android:id="@+id/btn_soft_kb_add"
+                style="@style/soft_keyboard_btn"
+                android:text="+"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_soft_kb_1"
+                style="@style/soft_keyboard_btn"
+                android:text="1"/>
+
+            <Button
+                android:id="@+id/btn_soft_kb_2"
+                style="@style/soft_keyboard_btn"
+                android:text="2"/>
+
+            <Button
+                android:id="@+id/btn_soft_kb_3"
+                style="@style/soft_keyboard_btn"
+                android:text="3"/>
+            <Button
+                android:id="@+id/btn_soft_kb_minus"
+                style="@style/soft_keyboard_btn"
+                android:text="-"/>
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_soft_kb_point"
+            style="@style/soft_keyboard_btn"
+            android:text="." />
+
+        <Button
+            android:id="@+id/btn_soft_kb_0"
+            style="@style/soft_keyboard_btn"
+            android:text="0" />
+
+
+        <FrameLayout
+            style="@style/soft_keyboard_btn"
+            android:layout_weight="2">
+
+            <Button
+                android:id="@+id/btn_soft_kb_submit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                style="@style/theme_btn"
+                android:text="完成" />
+
+            <Button
+                android:id="@+id/btn_soft_kb_calculate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:text="=" />
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -19,7 +19,9 @@
     <color name="main_tab_background">#f6f6f6</color>
     <color name="background_gray">#ffb2b2b2</color>
     <color name="background_gray2">#e4e4e4</color>
+    <color name="background_gray2_alpha">#dde4e4e4</color>
     <color name="background_gray3">#efefef</color>
+    <color name="background_gray3_alpha">#ddefefef</color>
     <color name="black">#000000</color>
     <!-- 应用主题颜色-->
     <color name="btn_app_theme1">#29b216</color>
@@ -28,11 +30,6 @@
     <color name="btn_app_theme4">#5393ed</color>
     <color name="btn_app_theme5">#F1F1F1</color>
 
-
-
-    <!--行程item按钮颜色-->
-    <color name="btn_orange_light">#FFF95200</color>
-    <color name="btn_orange_deep">#fffd6921</color>
 
     <!-- 字体颜色-->
     <color name="font_gray5">#9A9A9A</color>
@@ -52,23 +49,13 @@
     <color name="round_orange">#ffff7a3a</color>
     <color name="round_gray">#ffb2b2b2 </color>
     <!-- 列表项分割线颜色 -->
-    <color name="listview_divider_color">#eaeaea</color>
+    <color name="dividing_line_gray">#eaeaea</color>
 
     <color name="gray_line">#D8D8D8</color>
     <color name="top_line">#e0e0e0</color>
     <color name="bottom_line">#e7e7e7</color>
     <color name="content_line">#f5f5f5</color>
 
-    <!--路线颜色-->
-    <color name="map_line">#388bff</color>
-
-    <!--行程详细item颜色-->
-    <color name="run_journey_item_orange">#FFF95200</color>
-    <color name="run_journey_item_green">#3DBD43</color>
 
 
-    <!--dot颜色-->
-    <color name="dot_normal">#B5B5B5</color>
-    <color name="dot_focused">#FFFFFF</color>
-    <color name="dividing_line_gray">#e0e0e0</color>
 </resources>

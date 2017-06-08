@@ -20,6 +20,10 @@ public class BillType {
         this.typeName = typeName;
         this.typeId = typeId;
     }
+    public BillType(int typeId, String typeName) {
+        this.typeName = typeName;
+        this.typeId = typeId;
+    }
     @Generated(hash = 778408781)
     public BillType() {
     }

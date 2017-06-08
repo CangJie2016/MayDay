@@ -3,4 +3,12 @@
     <color name="colorPrimary">@color/main_tab_button_normal</color>
     <color name="colorPrimaryDark">@color/main_tab_button_selete</color>
     <color name="colorAccent">@color/main_tab_font_normal</color>
+
+
+    <color name="time_line_item_normal">@color/transparent</color>
+    <color name="time_line_item_select">@color/transparent</color>
+
+    <color name="pie_item_normal">@color/transparent</color>
+
+    <color name="theme_color_2">#87C38F</color>
 </resources>
