@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import com.cangjie.data.entity.BillType;
 import com.cangjie.mayday.R;
-import com.cangjie.mayday.ui.AddBillActivity;
 import com.cangjie.mayday.ui.AlertBillTypeActivity;
+import com.cangjie.mayday.ui.AlertBillTypeDetailActivity;
 
 import java.util.List;
 
@@ -21,16 +21,14 @@ import butterknife.ButterKnife;
  * Created by 李振强 on 2017/5/27.
  */
 
-public class BillTypeAdapter extends RecyclerView.Adapter<BillTypeAdapter.BillTypeViewHolder> {
+public class AlertBillTypeAdapter extends RecyclerView.Adapter<AlertBillTypeAdapter.BillTypeViewHolder> {
     private List<BillType> mData;
-    private AddBillActivity mActivity;
+    private AlertBillTypeActivity activity;
     private final LayoutInflater mLayoutInflater;
-    private int currentType;
 
-    public BillTypeAdapter(AddBillActivity context, List<BillType> list){
-        this.mActivity = context;
+    public AlertBillTypeAdapter(AlertBillTypeActivity context, List<BillType> list){
+        this.activity = context;
         this.mData = list;
-        currentType = mData.get(0).getTypeId();
         mLayoutInflater = LayoutInflater.from(context);
     }
 
@@ -42,47 +40,25 @@ public class BillTypeAdapter extends RecyclerView.Adapter<BillTypeAdapter.BillTy
 
     @Override
     public void onBindViewHolder(BillTypeViewHolder holder, int position) {
-        // 当前项是否为最后一项“自定义”
-        if(position == mData.size() - 1){
-            holder.tv_name.setBackgroundColor(mActivity.getResources().getColor(R.color.white));
-            holder.tv_name.setText("自定义");
-            holder.tv_name.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mActivity.startActivity(new Intent(mActivity, AlertBillTypeActivity.class));
-                }
-            });
-        }else{
             final BillType element = mData.get(position);
-            if (element.getTypeId() == currentType)
-                holder.tv_name.setBackgroundColor(mActivity.getResources().getColor(R.color.theme_color_2));
-            else
-                holder.tv_name.setBackgroundColor(mActivity.getResources().getColor(R.color.white));
+                holder.tv_name.setBackgroundColor(activity.getResources().getColor(R.color.white));
 
             holder.tv_name.setText(element.getTypeName());
             holder.tv_name.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    currentType = element.getTypeId();
-                    notifyDataSetChanged();
+                    Intent intent = new Intent(activity, AlertBillTypeDetailActivity.class);
+                    intent.putExtra("type", element.getTypeName());
+                    intent.putExtra("typeId", element.getId());
+                    activity.startActivity(intent);
                 }
             });
-        }
-    }
-
-    public int getCurrentTypeId(){
-        return currentType;
     }
 
     @Override
     public int getItemCount() {
         return mData.size();
     }
-
-    public void setCurrentCostType(int costType) {
-        currentType = costType;
-    }
-
 
     public class BillTypeViewHolder extends RecyclerView.ViewHolder{
         @Bind(R.id.tv_name)

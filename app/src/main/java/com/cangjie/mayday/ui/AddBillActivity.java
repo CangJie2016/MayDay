@@ -12,8 +12,6 @@ import android.widget.EditText;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.cangjie.basetool.mvp.base.PresenterActivity;
-import com.cangjie.basetool.utils.DebugLog;
-import com.cangjie.basetool.utils.ToastHelper;
 import com.cangjie.basetool.view.recycle_view.DividerItemDecoration;
 import com.cangjie.mayday.R;
 import com.cangjie.mayday.adapter.BillTypeAdapter;
@@ -22,7 +20,6 @@ import com.cangjie.mayday.presenter.AddBillPresenter;
 import com.cangjie.mayday.presenter.view.AddBillView;
 import com.cangjie.mayday.view.CustomSoftKeyboard;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
@@ -57,12 +54,6 @@ public class AddBillActivity extends PresenterActivity<AddBillPresenter> impleme
         ButterKnife.bind(this);
         showTitle("记账");
         showBackButton();
-        showRightImageButton(R.drawable.btn_delete, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDeleteDialog();
-            }
-        });
         mPresenter.obatinBillType();
         initView();
     }
@@ -98,8 +89,15 @@ public class AddBillActivity extends PresenterActivity<AddBillPresenter> impleme
             isAlertMode = true;
         }
         // 是否编辑修改模式
-        if (isAlertMode)
+        if (isAlertMode){
             showCacheData(currentPerCost);
+            showRightImageButton(R.drawable.btn_delete, new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showDeleteDialog();
+                }
+            });
+        }
         rv_bill_type.setLayoutManager(new GridLayoutManager(mContext,4));
         rv_bill_type.addItemDecoration(new DividerItemDecoration(mContext, R.color.white,
                 DividerItemDecoration.VERTICAL_LIST));

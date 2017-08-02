@@ -31,6 +31,8 @@ public class AddBillPresenter extends BasePresenter<AddBillView> {
 
     public void obatinBillType() {
         List<BillType> billTypeList = mBillTypeDao.loadAll();
+        // 手动在末尾添加“自定义”选项
+        billTypeList.add(new BillType());
         billTypeAdapter = new BillTypeAdapter(mActivity, billTypeList);
         mvpView.setBillTypeAdapter(billTypeAdapter);
     }

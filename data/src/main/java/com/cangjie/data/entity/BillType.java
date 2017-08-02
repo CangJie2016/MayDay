@@ -1,15 +1,15 @@
 package com.cangjie.data.entity;
 
 import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Id;
 
 /**
  * Created by 李振强 on 2017/5/31.
  */
 
 @Entity
-public class BillType {
+public class BillType{
     @Id
     private Long id;
     private String typeName;

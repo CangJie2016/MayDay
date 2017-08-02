@@ -60,6 +60,7 @@
             <Button
                 android:id="@+id/btn_soft_kb_add"
                 style="@style/soft_keyboard_btn"
+                android:visibility="invisible"
                 android:text="+"/>
         </LinearLayout>
 
@@ -86,6 +87,7 @@
             <Button
                 android:id="@+id/btn_soft_kb_minus"
                 style="@style/soft_keyboard_btn"
+                android:visibility="invisible"
                 android:text="-"/>
         </LinearLayout>
 

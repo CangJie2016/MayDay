@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cangjie.mayday">
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -17,19 +18,18 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
-        <activity android:name=".ui.MainActivity">
-
+        <activity android:name=".ui.MainActivity"></activity>
+        <activity android:name=".ui.AddBillActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.AddBillActivity" />
+        <activity android:name=".ui.AlertBillTypeActivity" />
         <activity android:name=".ui.SetGoalActivity" />
-        <activity android:name=".ui.PieTestActivity">
-
-        </activity>
+        <activity android:name=".ui.PieTestActivity"></activity>
+        <activity android:name=".ui.AlertBillTypeDetailActivity"></activity>
     </application>
 
 </manifest>
