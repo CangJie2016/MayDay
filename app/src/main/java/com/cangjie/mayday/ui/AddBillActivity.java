@@ -1,6 +1,9 @@
 package com.cangjie.mayday.ui;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
@@ -12,13 +15,13 @@ import android.widget.EditText;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.cangjie.basetool.mvp.base.PresenterActivity;
-import com.cangjie.basetool.view.recycle_view.DividerItemDecoration;
 import com.cangjie.mayday.R;
 import com.cangjie.mayday.adapter.BillTypeAdapter;
 import com.cangjie.mayday.domain.PerCost;
 import com.cangjie.mayday.presenter.AddBillPresenter;
 import com.cangjie.mayday.presenter.view.AddBillView;
 import com.cangjie.mayday.view.CustomSoftKeyboard;
+import com.cangjie.mayday.view.DividerGridItemDecoration;
 
 import java.text.SimpleDateFormat;
 import java.util.Locale;
@@ -40,6 +43,7 @@ public class AddBillActivity extends PresenterActivity<AddBillPresenter> impleme
 
     private PerCost currentPerCost;
     private boolean isAlertMode;
+    private RefreshTypeBroadcast refreshTypeBroadcast;
 
 
     @Override
@@ -56,6 +60,7 @@ public class AddBillActivity extends PresenterActivity<AddBillPresenter> impleme
         showBackButton();
         mPresenter.obatinBillType();
         initView();
+        initBroadcast();
     }
 
     private void showDeleteDialog() {
@@ -84,12 +89,12 @@ public class AddBillActivity extends PresenterActivity<AddBillPresenter> impleme
 
     private void initView() {
         PerCost perCost = (PerCost) getIntent().getSerializableExtra("perCost");
-        if (perCost != null){
+        if (perCost != null) {
             currentPerCost = perCost;
             isAlertMode = true;
         }
         // 是否编辑修改模式
-        if (isAlertMode){
+        if (isAlertMode) {
             showCacheData(currentPerCost);
             showRightImageButton(R.drawable.btn_delete, new View.OnClickListener() {
                 @Override
@@ -98,9 +103,8 @@ public class AddBillActivity extends PresenterActivity<AddBillPresenter> impleme
                 }
             });
         }
-        rv_bill_type.setLayoutManager(new GridLayoutManager(mContext,4));
-        rv_bill_type.addItemDecoration(new DividerItemDecoration(mContext, R.color.white,
-                DividerItemDecoration.VERTICAL_LIST));
+        rv_bill_type.setLayoutManager(new GridLayoutManager(mContext, 4));
+        rv_bill_type.addItemDecoration(new DividerGridItemDecoration(mContext));
         custom_kb.setOnSoftKeyBoardListener(new CustomSoftKeyboard.OnSoftKeyBoardListener() {
             @Override
             public void onClickSubmitListener(double d) {
@@ -115,20 +119,20 @@ public class AddBillActivity extends PresenterActivity<AddBillPresenter> impleme
         mPresenter.setCurrentCostType(currentPerCost.getCostType());
     }
 
-    public void add(double d){
+    public void add(double d) {
         String money = String.valueOf(d);
         String remarks = et_remarks.getText().toString();
-        if(TextUtils.isEmpty(money)){
+        if (TextUtils.isEmpty(money)) {
             disPlay("请填写正确的金额");
             return;
         }
         // 是否为修改模式
-        if (isAlertMode){
+        if (isAlertMode) {
             Double aDouble = Double.valueOf(money);
             currentPerCost.setCostMoney(aDouble);
             currentPerCost.setRemark(remarks);
             mPresenter.alterBill(currentPerCost);
-        }else{
+        } else {
             PerCost perCost = new PerCost();
             Double aDouble = Double.valueOf(money);
             perCost.setCostMoney(aDouble);
@@ -159,4 +163,30 @@ public class AddBillActivity extends PresenterActivity<AddBillPresenter> impleme
         sendBroadcast(new Intent(TimeLineFragment.TIMELINE_ACTION));
     }
 
+    private void initBroadcast() {
+        refreshTypeBroadcast = new RefreshTypeBroadcast();
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(BillTypeDetailActivity.REFRESH_TYPE_ACTION);
+        registerReceiver(refreshTypeBroadcast, intentFilter);
+    }
+
+
+    public class RefreshTypeBroadcast extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            // 如果在编辑模式下修改了种类名称，则自动退出该界面
+            if (isAlertMode) {
+                finish();
+            } else {
+                mPresenter.obatinBillType();
+            }
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(refreshTypeBroadcast);
+    }
 }

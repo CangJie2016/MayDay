@@ -9,7 +9,7 @@ import java.util.Date;
 
 public class PerCost implements Serializable {
     private long id;
-    private int costType;// 消费类型
+    private long costType;// 消费类型
     private double costMoney; // 消费金额
     private Date date; // 记录时间
     private String remark; //备注
@@ -22,11 +22,11 @@ public class PerCost implements Serializable {
         this.id = id;
     }
 
-    public int getCostType() {
+    public long getCostType() {
         return costType;
     }
 
-    public void setCostType(int costType) {
+    public void setCostType(long costType) {
         this.costType = costType;
     }
 

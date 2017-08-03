@@ -13,16 +13,13 @@ public class BillType{
     @Id
     private Long id;
     private String typeName;
-    private int typeId;
-    @Generated(hash = 1660893950)
-    public BillType(Long id, String typeName, int typeId) {
+    @Generated(hash = 487757228)
+    public BillType(Long id, String typeName) {
         this.id = id;
         this.typeName = typeName;
-        this.typeId = typeId;
     }
-    public BillType(int typeId, String typeName) {
+    public BillType(String typeName) {
         this.typeName = typeName;
-        this.typeId = typeId;
     }
     @Generated(hash = 778408781)
     public BillType() {
@@ -39,12 +36,5 @@ public class BillType{
     public void setTypeName(String typeName) {
         this.typeName = typeName;
     }
-    public int getTypeId() {
-        return this.typeId;
-    }
-    public void setTypeId(int typeId) {
-        this.typeId = typeId;
-    }
 
-    
 }

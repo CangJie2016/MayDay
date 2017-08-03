@@ -19,12 +19,13 @@ public class Bill{
     @Id
     private Long id;
     private Double money;
-    private int billType;
+    private Long billType;
     private java.util.Date date;
     private int isDele; // 1 dele  0 normal
     private String remarks;
-    @Generated(hash = 77731742)
-    public Bill(Long id, Double money, int billType, java.util.Date date,
+
+    @Generated(hash = 1175771909)
+    public Bill(Long id, Double money, Long billType, java.util.Date date,
             int isDele, String remarks) {
         this.id = id;
         this.money = money;
@@ -33,44 +34,56 @@ public class Bill{
         this.isDele = isDele;
         this.remarks = remarks;
     }
+
     @Generated(hash = 1399599325)
     public Bill() {
     }
+
     public Long getId() {
-        return this.id;
+        return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
+
     public Double getMoney() {
-        return this.money;
+        return money;
     }
+
     public void setMoney(Double money) {
         this.money = money;
     }
-    public int getBillType() {
-        return this.billType;
+
+    public Long getBillType() {
+        return billType;
     }
-    public void setBillType(int billType) {
+
+    public void setBillType(Long billType) {
         this.billType = billType;
     }
-    public java.util.Date getDate() {
-        return this.date;
+
+    public Date getDate() {
+        return date;
     }
-    public void setDate(java.util.Date date) {
+
+    public void setDate(Date date) {
         this.date = date;
     }
+
     public int getIsDele() {
-        return this.isDele;
+        return isDele;
     }
+
     public void setIsDele(int isDele) {
         this.isDele = isDele;
     }
+
     public String getRemarks() {
-        return this.remarks;
+        return remarks;
     }
+
     public void setRemarks(String remarks) {
         this.remarks = remarks;
     }
-    
 }

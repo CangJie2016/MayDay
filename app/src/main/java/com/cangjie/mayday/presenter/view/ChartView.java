@@ -14,4 +14,8 @@ public interface ChartView extends BaseView {
     void setPieData(List<BillByPieChart> billByPieCharts);
 
     void setPieDetailList(String typeName, List<Bill> bills);
+
+    void setCurrentMonth(int currentYear, int currentMonth);
+
+    void emptyPieDetailList();
 }

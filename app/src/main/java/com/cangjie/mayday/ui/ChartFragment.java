@@ -5,14 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
-import android.text.style.RelativeSizeSpan;
-import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,6 +42,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 import static com.cangjie.mayday.ui.TimeLineFragment.GOAL_ACTION;
 import static com.cangjie.mayday.ui.TimeLineFragment.TIMELINE_ACTION;
@@ -65,17 +61,21 @@ public class ChartFragment extends PresenterFragment<ChartPresenter> implements 
     RecyclerView rv_pie_detail;
     @Bind(R.id.ll_pie_detail_container)
     LinearLayout ll_pie_detail_container;
+    @Bind(R.id.tv_pie_detail_tips)
+    TextView tv_pie_detail_tips;
     @Bind(R.id.tv_date)
     TextView tv_type;
     @Bind(R.id.tv_sum_money)
     TextView tv_sum_money;
 
-    private String mBeginDate = "20170601", mEndDate = "20170701";
+    @Bind(R.id.tv_current_month)
+    TextView tv_current_month;
+
 
     private BroadcastReceiver refreshReceiver = new BroadcastReceiver(){
         @Override
         public void onReceive(Context context, Intent intent) {
-            mPresenter.refreshData(mBeginDate, mEndDate);
+            mPresenter.refreshData();
         }
     };
     private PieDetailAdapter mPieDetailAdapter;
@@ -98,10 +98,13 @@ public class ChartFragment extends PresenterFragment<ChartPresenter> implements 
         showTitle("图表");
         initChartView();
         initRecycleView();
-        mPresenter.refreshData(mBeginDate, mEndDate);
+
+        mPresenter.initDate();
         initRefreshBroadcast();
         return rootView;
     }
+
+
 
     private void initRecycleView() {
         rv_pie_detail.setLayoutManager(new LinearLayoutManager(mContext));
@@ -191,21 +194,25 @@ public class ChartFragment extends PresenterFragment<ChartPresenter> implements 
                 "Value: " + e.getY() + ", index: " + h.getX()
                         + ", DataSet index: " + h.getDataSetIndex());
         mPresenter.findMapElementByIndex((int)h.getX());
-//        showBottomDetailView();
+//        showChartData();
     }
 
     @Override
     public void onNothingSelected() {
         Log.i("PieChart", "nothing selected");
-//        hideBottomDetailView();
+//        emptyChartData();
     }
 
-    private void hideBottomDetailView() {
+    private void emptyChartData() {
         ll_pie_detail_container.setVisibility(View.INVISIBLE);
+        mChart.setVisibility(View.INVISIBLE);
+        tv_pie_detail_tips.setVisibility(View.VISIBLE);
     }
 
-    private void showBottomDetailView() {
+    private void showChartData() {
         ll_pie_detail_container.setVisibility(View.VISIBLE);
+        mChart.setVisibility(View.VISIBLE);
+        tv_pie_detail_tips.setVisibility(View.INVISIBLE);
     }
     @Override
     public void setPieData(List<BillByPieChart> billList) {
@@ -268,6 +275,7 @@ public class ChartFragment extends PresenterFragment<ChartPresenter> implements 
     public void setPieDetailList(String typeName, List<Bill> bills) {
         if (bills == null || bills.size() == 0)
             return;
+        showChartData();
         tv_type.setText(typeName);
         double sumCost = 0;
         for (Bill bill : bills)
@@ -278,5 +286,29 @@ public class ChartFragment extends PresenterFragment<ChartPresenter> implements 
             mPieDetailAdapter = new PieDetailAdapter(getActivity());
         mPieDetailAdapter.setData(bills);
         rv_pie_detail.setAdapter(mPieDetailAdapter);
+    }
+
+    @Override
+    public void setCurrentMonth(int currentYear, int currentMonth) {
+        tv_current_month.setText(getResources().getString(R.string.format_year_month, currentYear, currentMonth));
+    }
+
+    @Override
+    public void emptyPieDetailList() {
+        emptyChartData();
+    }
+
+    @OnClick(R.id.btn_next_month)
+    public void nextMonth(){
+        mPresenter.nextMonth();
+    }
+    @OnClick(R.id.btn_last_month)
+    public void lastMonth(){
+        mPresenter.lastMonth();
+    }
+    @OnClick(R.id.tv_pie_detail_tips)
+    public void goAddBillPage(){
+        Intent intent = new Intent(mContext, AddBillActivity.class);
+        startActivity(intent);
     }
 }

@@ -1,23 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/tv_pie_detail_tips"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="点我添加账单记录\n                      ( ﾟ∀ﾟ) ﾉ♡"
+        android:textSize="16sp"
+        android:textColor="@color/theme_color_2_normal"
+        android:gravity="center"/>
+    <LinearLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_last_month"
+            style="@style/chart_top_switch_month_btn"
+            android:text="上月"
+            android:drawableStart="@drawable/btn_switch_month_left_arrow"/>
+
+        <TextView
+            android:id="@+id/tv_current_month"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="2017年6月"
+            android:textSize="16sp"
+            android:textColor="@color/theme_color_2_normal"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/btn_next_month"
+            style="@style/chart_top_switch_month_btn"
+            android:text="下月"
+            android:drawableRight="@drawable/btn_switch_month_right_arrow"/>
+    </LinearLayout>
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/pie_chart"
         android:layout_width="match_parent"
         android:layout_height="280dp"/>
-    <LinearLayout
-        android:id="@+id/ll_pie_detail_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <include layout="@layout/item_time_line"/>
-        <include layout="@layout/include_division"/>
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_pie_detail"
+        <LinearLayout
+            android:id="@+id/ll_pie_detail_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:orientation="vertical">
+            <include layout="@layout/item_time_line"/>
+            <include layout="@layout/include_division"/>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_pie_detail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</FrameLayout>

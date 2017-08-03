@@ -1,61 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@color/main_tab_button_normal</color>
-    <color name="colorPrimaryDark">@color/main_tab_button_selete</color>
-    <color name="colorAccent">@color/main_tab_font_normal</color>
+    <color name="colorPrimary">@color/window_top_status_bar</color>
+    <color name="colorPrimaryDark">@color/window_top_status_bar</color>
+    <color name="colorAccent">@color/white</color>
 
-    <color name="main">#388bff</color>
     <color name="main_tab_font_normal">#7c8da7</color>
-
-    <color name="main_tab_button_selete">#3a3a3a</color>
+    <color name="main_tab_button_select">#3a3a3a</color>
     <color name="main_tab_button_normal">#222222</color>
+
     <color name="white">#FFFFFF</color>
-    <color name="driver_line">#f0f0f0</color>
     <color name="transparent">@android:color/transparent</color>
-    <color name="station_gray">#f5f5f5</color>
     <color name="font_black">#6a6a6a</color>
-    <color name="font_data_black">#333333</color>
-    <color name="main_tab_font_select">#388bff</color>
-    <color name="main_tab_background">#f6f6f6</color>
-    <color name="background_gray">#ffb2b2b2</color>
-    <color name="background_gray2">#e4e4e4</color>
-    <color name="background_gray2_alpha">#dde4e4e4</color>
-    <color name="background_gray3">#efefef</color>
-    <color name="background_gray3_alpha">#ddefefef</color>
-    <color name="black">#000000</color>
-    <!-- 应用主题颜色-->
-    <color name="btn_app_theme1">#29b216</color>
-    <color name="btn_app_theme2">#ffb0c32d</color>
-    <color name="btn_app_theme3">#0074c4</color>
-    <color name="btn_app_theme4">#5393ed</color>
-    <color name="btn_app_theme5">#F1F1F1</color>
 
-
-    <!-- 字体颜色-->
-    <color name="font_gray5">#9A9A9A</color>
-    <color name="font_gray4">#9A9A9A</color>
-    <color name="font_gray3">#888E99</color>
-    <color name="font_gray2">#bfbfbf</color>
-    <color name="font_gray1">#707070</color>
-    <color name="font_red1">#ffF21C1A</color>
-    <color name="font_red2">#f88e8d</color>
-    <color name="font_red3">#fa2020</color>
-    <color name="font_blue">#2287CD</color>
-    <color name="font_black2">#000000</color>
-
-    <!--圆圈颜色-->
-    <color name="round_red">#ffeb0000</color>
-    <color name="round_blue">#ff3993d0</color>
-    <color name="round_orange">#ffff7a3a</color>
-    <color name="round_gray">#ffb2b2b2 </color>
-    <!-- 列表项分割线颜色 -->
-    <color name="dividing_line_gray">#eaeaea</color>
-
-    <color name="gray_line">#D8D8D8</color>
-    <color name="top_line">#e0e0e0</color>
-    <color name="bottom_line">#e7e7e7</color>
-    <color name="content_line">#f5f5f5</color>
-
-
-
+    <color name="window_top_status_bar">#000000</color>
+    
+    <color name="recycle_view_refreshing_color">@color/main_tab_font_normal</color>
 </resources>

@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@mipmap/default_bg"
     tools:context="com.cangjie.mayday.ui.MainActivity">
 
     <com.cangjie.basetool.view.lazy_viewpager.CustomViewPager
@@ -14,12 +13,12 @@
         android:layout_height="0dip"
         android:layout_weight="1" />
 
+    <include layout="@layout/include_division"/>
     <RadioGroup
         android:id="@+id/rg_main"
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:layout_gravity="bottom"
-        android:background="@color/main_tab_background"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -36,7 +35,7 @@
 
         <Button
             android:id="@+id/btn_pencil"
-            android:background="@drawable/rb_main_tab_backgroud"
+            android:background="@color/transparent"
             android:paddingBottom="@dimen/margin_tiny"
             android:layout_width="0dp"
             android:layout_height="match_parent"

@@ -11,14 +11,14 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ui.WelcomeActivity">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
         </activity>
-        <activity android:name=".ui.MainActivity"></activity>
+        <activity android:name=".ui.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter> </activity>
         <activity android:name=".ui.AddBillActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,9 +27,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.AlertBillTypeActivity" />
-        <activity android:name=".ui.SetGoalActivity" />
+        <activity android:name=".ui.GoalActivity" />
         <activity android:name=".ui.PieTestActivity"></activity>
-        <activity android:name=".ui.AlertBillTypeDetailActivity"></activity>
+        <activity android:name=".ui.BillTypeDetailActivity"></activity>
     </application>
 
 </manifest>

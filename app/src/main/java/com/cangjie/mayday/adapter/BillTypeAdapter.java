@@ -25,12 +25,12 @@ public class BillTypeAdapter extends RecyclerView.Adapter<BillTypeAdapter.BillTy
     private List<BillType> mData;
     private AddBillActivity mActivity;
     private final LayoutInflater mLayoutInflater;
-    private int currentType;
+    private long currentType;
 
     public BillTypeAdapter(AddBillActivity context, List<BillType> list){
         this.mActivity = context;
         this.mData = list;
-        currentType = mData.get(0).getTypeId();
+        currentType = mData.get(0).getId();
         mLayoutInflater = LayoutInflater.from(context);
     }
 
@@ -54,7 +54,7 @@ public class BillTypeAdapter extends RecyclerView.Adapter<BillTypeAdapter.BillTy
             });
         }else{
             final BillType element = mData.get(position);
-            if (element.getTypeId() == currentType)
+            if (element.getId() == currentType)
                 holder.tv_name.setBackgroundColor(mActivity.getResources().getColor(R.color.theme_color_2));
             else
                 holder.tv_name.setBackgroundColor(mActivity.getResources().getColor(R.color.white));
@@ -63,14 +63,14 @@ public class BillTypeAdapter extends RecyclerView.Adapter<BillTypeAdapter.BillTy
             holder.tv_name.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    currentType = element.getTypeId();
+                    currentType = element.getId();
                     notifyDataSetChanged();
                 }
             });
         }
     }
 
-    public int getCurrentTypeId(){
+    public long getCurrentTypeId(){
         return currentType;
     }
 
@@ -79,7 +79,7 @@ public class BillTypeAdapter extends RecyclerView.Adapter<BillTypeAdapter.BillTy
         return mData.size();
     }
 
-    public void setCurrentCostType(int costType) {
+    public void setCurrentCostType(long costType) {
         currentType = costType;
     }
 

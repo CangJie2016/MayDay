@@ -21,7 +21,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class SetGoalActivity extends PresenterActivity<SetGoalPresenter> implements SetGoalView {
+public class GoalActivity extends PresenterActivity<SetGoalPresenter> implements SetGoalView {
     @Bind(R.id.btn_confirm)
     Button btn_confirm;
     @Bind(R.id.et_goal_name)

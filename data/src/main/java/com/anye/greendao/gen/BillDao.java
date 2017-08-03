@@ -26,7 +26,7 @@ public class BillDao extends AbstractDao<Bill, Long> {
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property Money = new Property(1, Double.class, "money", false, "MONEY");
-        public final static Property BillType = new Property(2, int.class, "billType", false, "BILL_TYPE");
+        public final static Property BillType = new Property(2, Long.class, "billType", false, "BILL_TYPE");
         public final static Property Date = new Property(3, java.util.Date.class, "date", false, "DATE");
         public final static Property IsDele = new Property(4, int.class, "isDele", false, "IS_DELE");
         public final static Property Remarks = new Property(5, String.class, "remarks", false, "REMARKS");
@@ -47,7 +47,7 @@ public class BillDao extends AbstractDao<Bill, Long> {
         db.execSQL("CREATE TABLE " + constraint + "\"BILL\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
                 "\"MONEY\" REAL," + // 1: money
-                "\"BILL_TYPE\" INTEGER NOT NULL ," + // 2: billType
+                "\"BILL_TYPE\" INTEGER," + // 2: billType
                 "\"DATE\" INTEGER," + // 3: date
                 "\"IS_DELE\" INTEGER NOT NULL ," + // 4: isDele
                 "\"REMARKS\" TEXT);"); // 5: remarks
@@ -72,7 +72,11 @@ public class BillDao extends AbstractDao<Bill, Long> {
         if (money != null) {
             stmt.bindDouble(2, money);
         }
-        stmt.bindLong(3, entity.getBillType());
+ 
+        Long billType = entity.getBillType();
+        if (billType != null) {
+            stmt.bindLong(3, billType);
+        }
  
         java.util.Date date = entity.getDate();
         if (date != null) {
@@ -99,7 +103,11 @@ public class BillDao extends AbstractDao<Bill, Long> {
         if (money != null) {
             stmt.bindDouble(2, money);
         }
-        stmt.bindLong(3, entity.getBillType());
+ 
+        Long billType = entity.getBillType();
+        if (billType != null) {
+            stmt.bindLong(3, billType);
+        }
  
         java.util.Date date = entity.getDate();
         if (date != null) {
@@ -123,7 +131,7 @@ public class BillDao extends AbstractDao<Bill, Long> {
         Bill entity = new Bill( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getDouble(offset + 1), // money
-            cursor.getInt(offset + 2), // billType
+            cursor.isNull(offset + 2) ? null : cursor.getLong(offset + 2), // billType
             cursor.isNull(offset + 3) ? null : new java.util.Date(cursor.getLong(offset + 3)), // date
             cursor.getInt(offset + 4), // isDele
             cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5) // remarks
@@ -135,7 +143,7 @@ public class BillDao extends AbstractDao<Bill, Long> {
     public void readEntity(Cursor cursor, Bill entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setMoney(cursor.isNull(offset + 1) ? null : cursor.getDouble(offset + 1));
-        entity.setBillType(cursor.getInt(offset + 2));
+        entity.setBillType(cursor.isNull(offset + 2) ? null : cursor.getLong(offset + 2));
         entity.setDate(cursor.isNull(offset + 3) ? null : new java.util.Date(cursor.getLong(offset + 3)));
         entity.setIsDele(cursor.getInt(offset + 4));
         entity.setRemarks(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));

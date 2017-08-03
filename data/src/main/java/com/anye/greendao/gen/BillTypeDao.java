@@ -26,7 +26,6 @@ public class BillTypeDao extends AbstractDao<BillType, Long> {
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property TypeName = new Property(1, String.class, "typeName", false, "TYPE_NAME");
-        public final static Property TypeId = new Property(2, int.class, "typeId", false, "TYPE_ID");
     }
 
 
@@ -43,8 +42,7 @@ public class BillTypeDao extends AbstractDao<BillType, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"BILL_TYPE\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
-                "\"TYPE_NAME\" TEXT," + // 1: typeName
-                "\"TYPE_ID\" INTEGER NOT NULL );"); // 2: typeId
+                "\"TYPE_NAME\" TEXT);"); // 1: typeName
     }
 
     /** Drops the underlying database table. */
@@ -66,7 +64,6 @@ public class BillTypeDao extends AbstractDao<BillType, Long> {
         if (typeName != null) {
             stmt.bindString(2, typeName);
         }
-        stmt.bindLong(3, entity.getTypeId());
     }
 
     @Override
@@ -82,7 +79,6 @@ public class BillTypeDao extends AbstractDao<BillType, Long> {
         if (typeName != null) {
             stmt.bindString(2, typeName);
         }
-        stmt.bindLong(3, entity.getTypeId());
     }
 
     @Override
@@ -94,8 +90,7 @@ public class BillTypeDao extends AbstractDao<BillType, Long> {
     public BillType readEntity(Cursor cursor, int offset) {
         BillType entity = new BillType( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
-            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // typeName
-            cursor.getInt(offset + 2) // typeId
+            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1) // typeName
         );
         return entity;
     }
@@ -104,7 +99,6 @@ public class BillTypeDao extends AbstractDao<BillType, Long> {
     public void readEntity(Cursor cursor, BillType entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setTypeName(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
-        entity.setTypeId(cursor.getInt(offset + 2));
      }
     
     @Override

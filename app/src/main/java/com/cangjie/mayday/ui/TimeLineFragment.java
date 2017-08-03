@@ -24,8 +24,6 @@ import com.cangjie.mayday.presenter.view.TimeLineView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-import static android.R.id.list;
-
 /**
  * Created by 李振强 on 2017/5/26.
  */
@@ -78,7 +76,7 @@ public class TimeLineFragment extends PresenterFragment<TimeLinePresenter> imple
         showRightImageButton(R.drawable.btn_main_goal, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), SetGoalActivity.class);
+                Intent intent = new Intent(getActivity(), GoalActivity.class);
                 startActivity(intent);
             }
         });
@@ -93,6 +91,7 @@ public class TimeLineFragment extends PresenterFragment<TimeLinePresenter> imple
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(TIMELINE_ACTION);
         intentFilter.addAction(GOAL_ACTION);
+        intentFilter.addAction(BillTypeDetailActivity.REFRESH_TYPE_ACTION);
         getActivity().registerReceiver(refreshReceiver, intentFilter);
     }
 

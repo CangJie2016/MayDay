@@ -7,13 +7,14 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.cangjie.basetool.mvp.base.PresenterActivity;
-import com.cangjie.basetool.view.recycle_view.DividerItemDecoration;
 import com.cangjie.mayday.R;
 import com.cangjie.mayday.adapter.AlertBillTypeAdapter;
 import com.cangjie.mayday.presenter.AlertBillTypePresenter;
 import com.cangjie.mayday.presenter.view.AlertBillTypeView;
+import com.cangjie.mayday.view.DividerGridItemDecoration;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -36,14 +37,25 @@ public class AlertBillTypeActivity extends PresenterActivity<AlertBillTypePresen
         ButterKnife.bind(this);
         showTitle("编辑类型");
         showBackButton();
+        showRightImageButton(R.drawable.btn_add_type, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AlertBillTypeActivity.this, BillTypeDetailActivity.class);
+                intent.putExtra("isAlter", false);
+                startActivity(intent);
+            }
+        });
         mPresenter.obatinBillType();
         rv_bill_type.setLayoutManager(new GridLayoutManager(mContext,4));
-        rv_bill_type.addItemDecoration(new DividerItemDecoration(mContext, R.color.white,
-                DividerItemDecoration.VERTICAL_LIST));
+        rv_bill_type.addItemDecoration(new DividerGridItemDecoration(mContext));
 
+        initBroadcast();
+    }
+
+    private void initBroadcast() {
         refreshTypeBroadcast = new RefreshTypeBroadcast();
         IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(AlertBillTypeDetailActivity.REFRESH_TYPE_ACTION);
+        intentFilter.addAction(BillTypeDetailActivity.REFRESH_TYPE_ACTION);
         registerReceiver(refreshTypeBroadcast, intentFilter);
     }
 

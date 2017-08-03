@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@color/main_tab_button_normal</color>
-    <color name="colorPrimaryDark">@color/main_tab_button_selete</color>
+    <color name="colorPrimary">@color/window_top_status_bar</color>
+    <color name="colorPrimaryDark">@color/window_top_status_bar</color>
     <color name="colorAccent">@color/main_tab_font_normal</color>
 
 
@@ -11,4 +11,13 @@
     <color name="pie_item_normal">@color/transparent</color>
 
     <color name="theme_color_2">#87C38F</color>
+    <color name="theme_color_2_normal">#7c8da7</color>
+
+
+    <color name="main_tab_background">#f6f6f6</color>
+    <color name="main">#388bff</color>
+
+
+    <color name="time_line_item_background_gray">#aaf0f0f0</color>
+
 </resources>

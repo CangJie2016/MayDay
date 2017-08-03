@@ -6,10 +6,10 @@ package com.cangjie.mayday.domain;
 
 public class BillByPieChart {
     private String billTypeName;
-    private int billType;
+    private long billType;
     private double sumCost;
 
-    public BillByPieChart(String billTypeName, int billType, double sumCost) {
+    public BillByPieChart(String billTypeName, long billType, double sumCost) {
         this.billTypeName = billTypeName;
         this.billType = billType;
         this.sumCost = sumCost;
@@ -23,7 +23,7 @@ public class BillByPieChart {
         this.billTypeName = billTypeName;
     }
 
-    public int getBillType() {
+    public long getBillType() {
         return billType;
     }
 

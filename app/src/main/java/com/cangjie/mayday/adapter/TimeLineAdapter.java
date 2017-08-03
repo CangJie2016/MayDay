@@ -77,9 +77,9 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.TimeLi
         holder.tv_sum_money.setText(String.valueOf(sumMoney) + "元");
     }
 
-    private String typeName(int billType) {
+    private String typeName(long billType) {
         for(BillType type : mBillTypeList){
-            if (type.getTypeId() == billType)
+            if (type.getId() == billType)
                 return type.getTypeName();
         }
         return null;

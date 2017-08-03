@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.cangjie.mayday.ui.AlertBillTypeDetailActivity">
+    tools:context="com.cangjie.mayday.ui.BillTypeDetailActivity">
 
     <EditText
         android:id="@+id/et_type_name"
@@ -13,14 +13,26 @@
         android:layout_height="wrap_content"/>
     
     <Button
+        android:id="@+id/btn_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="add"
+        android:onClick="add"/>
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
         android:text="save"
         android:onClick="save"/>
 
     <Button
+        android:id="@+id/btn_delete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:text="delete"
         android:onClick="delete"/>
 </LinearLayout>

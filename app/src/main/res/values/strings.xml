@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">简记</string>
 
-    <string name="time_line_goal">目标：%1$s元</string>
+    <string name="time_line_goal">%1$s元</string>
     <string name="time_line_cost">本月花销：%1$s元</string>
     <string name="time_line_set_goal">点击右上角制定目标</string>
 
     <string name="format_yuan">%1$s元</string>
+
+    <string name="format_year_month">%1$d年%2$d月</string>
 </resources>

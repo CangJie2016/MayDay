@@ -71,9 +71,9 @@ public class TimeLineAdapter2 extends RecyclerView.Adapter<TimeLineAdapter2.Time
         });
     }
 
-    private String typeName(int billType) {
+    private String typeName(long billType) {
         for(BillType type : mBillTypeList){
-            if (type.getTypeId() == billType)
+            if (type.getId() == billType)
                 return type.getTypeName();
         }
         return null;

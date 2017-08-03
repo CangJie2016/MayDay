@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rel_base_headArea"
     android:layout_width="match_parent"
-    android:layout_height="49dp"
+    android:layout_height="46dp"
     android:clickable="true"
     android:focusable="true"
     android:focusableInTouchMode="true">
@@ -16,7 +16,7 @@
         android:drawableLeft="@drawable/btn_head_back"
         android:text=""
         android:textSize="@dimen/font_medium"
-        android:paddingLeft="16dp"
+        android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:drawablePadding="4dp"
         android:textColor="@color/white"

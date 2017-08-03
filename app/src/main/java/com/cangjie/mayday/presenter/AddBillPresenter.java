@@ -59,7 +59,7 @@ public class AddBillPresenter extends BasePresenter<AddBillView> {
         mvpView.addBillSuccess();
     }
 
-    public void setCurrentCostType(int costType) {
+    public void setCurrentCostType(long costType) {
         billTypeAdapter.setCurrentCostType(costType);
         billTypeAdapter.notifyDataSetChanged();
     }

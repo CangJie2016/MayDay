@@ -11,25 +11,25 @@ import java.util.List;
  */
 
 public class DbInit {
-    public static void init(BillTypeDao mBillTypeDao){
+    public static void init(BillTypeDao mBillTypeDao) {
         List<BillType> list = new ArrayList<BillType>();
-        list.add(new BillType(1, "用餐"));
-        list.add(new BillType(2, "交通"));
-        list.add(new BillType(3, "服饰"));
-        list.add(new BillType(4, "丽人"));
-        list.add(new BillType(5, "日用品"));
-        list.add(new BillType(6, "娱乐"));
-        list.add(new BillType(7, "食材"));
-        list.add(new BillType(8, "零食"));
-        list.add(new BillType(9, "酒水"));
-        list.add(new BillType(10, "住房"));
-        list.add(new BillType(11, "通讯"));
-        list.add(new BillType(12, "家居"));
-        list.add(new BillType(13, "人情"));
-        list.add(new BillType(14, "学习"));
-        list.add(new BillType(15, "医疗"));
-        list.add(new BillType(16, "旅游"));
-        list.add(new BillType(17, "数码"));
+        list.add(new BillType("用餐"));
+        list.add(new BillType("交通"));
+        list.add(new BillType("服饰"));
+        list.add(new BillType("丽人"));
+        list.add(new BillType("日用品"));
+        list.add(new BillType("娱乐"));
+        list.add(new BillType("食材"));
+        list.add(new BillType("零食"));
+        list.add(new BillType("酒水"));
+        list.add(new BillType("住房"));
+        list.add(new BillType("通讯"));
+        list.add(new BillType("家居"));
+        list.add(new BillType("人情"));
+        list.add(new BillType("学习"));
+        list.add(new BillType("医疗"));
+        list.add(new BillType("旅游"));
+        list.add(new BillType("数码"));
         mBillTypeDao.insertInTx(list);//添加一个
     }
 }

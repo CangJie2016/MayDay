@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.cangjie.data.entity.BillType;
 import com.cangjie.mayday.R;
 import com.cangjie.mayday.ui.AlertBillTypeActivity;
-import com.cangjie.mayday.ui.AlertBillTypeDetailActivity;
+import com.cangjie.mayday.ui.BillTypeDetailActivity;
 
 import java.util.List;
 
@@ -47,9 +47,9 @@ public class AlertBillTypeAdapter extends RecyclerView.Adapter<AlertBillTypeAdap
             holder.tv_name.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(activity, AlertBillTypeDetailActivity.class);
+                    Intent intent = new Intent(activity, BillTypeDetailActivity.class);
                     intent.putExtra("type", element.getTypeName());
-                    intent.putExtra("typeId", element.getId());
+                    intent.putExtra("id", element.getId());
                     activity.startActivity(intent);
                 }
             });
