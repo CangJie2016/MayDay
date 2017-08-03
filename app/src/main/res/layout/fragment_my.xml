@@ -59,4 +59,13 @@
             style="@style/my_fragment_item"
             android:text="意见建议"/>
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <TextView
+        android:id="@+id/tv_version"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
 </LinearLayout>

@@ -8,4 +8,6 @@
     <string name="format_yuan">%1$s元</string>
 
     <string name="format_year_month">%1$d年%2$d月</string>
+
+    <string name="version">v%1$s</string>
 </resources>
