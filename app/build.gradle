@@ -41,5 +41,4 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.afollestad.material-dialogs:core:0.9.2.3'
     testCompile 'junit:junit:4.12'
-    compile 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.2.1'
 }

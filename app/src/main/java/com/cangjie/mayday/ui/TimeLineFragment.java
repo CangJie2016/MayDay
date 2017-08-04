@@ -38,9 +38,6 @@ public class TimeLineFragment extends PresenterFragment<TimeLinePresenter> imple
     TextView tv_goal;
 
     Context mContext;
-    private TimeLineAdapter adapter;
-    private LoadMoreAdapterWrapper mAdapter;
-    private LoadMoreAdapterWrapper.ILoadCallback mLoadCallback;
     public static final String TIMELINE_ACTION = "com.cangjie.mayday.timeline_refresh";
     public static final String GOAL_ACTION = "com.cangjie.mayday.goal.refresh";
     private BroadcastReceiver refreshReceiver = new BroadcastReceiver(){
@@ -81,8 +78,6 @@ public class TimeLineFragment extends PresenterFragment<TimeLinePresenter> imple
             }
         });
         rv_timeline.setLayoutManager(new LinearLayoutManager(mContext));
-        rv_timeline.addItemDecoration(new DividerItemDecoration(mContext, R.color.white,
-                DividerItemDecoration.VERTICAL_LIST));
         initRefreshBroadcast();
         return rootView;
     }

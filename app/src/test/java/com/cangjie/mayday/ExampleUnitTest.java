@@ -12,7 +12,11 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
+        double d = 3.2;
+        double d2 = Math.floor(d);
+        int i = (int)d;
+        int i2 = (int)d2;
+        assertEquals(i, i2);
     }
 
     @Test

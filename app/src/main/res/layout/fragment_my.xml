@@ -6,15 +6,27 @@
         android:id="@+id/ll_user_info"
         android:layout_width="match_parent"
         android:layout_height="@dimen/my_fragment_height"
+        android:visibility="gone"
         android:orientation="horizontal">
         <TextView
             style="@style/my_fragment_item"
             android:text="用户信息"/>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/ll_password_store"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/my_fragment_height"
+        android:orientation="horizontal">
+        <TextView
+            style="@style/my_fragment_item"
+            android:text="账号仓库"/>
+    </LinearLayout>
+    <include layout="@layout/include_division"/>
+    <LinearLayout
         android:id="@+id/ll_credits_exchange"
         android:layout_width="match_parent"
         android:layout_height="@dimen/my_fragment_height"
+        android:visibility="gone"
         android:orientation="horizontal">
         <TextView
             style="@style/my_fragment_item"
@@ -25,6 +37,7 @@
         android:id="@+id/ll_activity"
         android:layout_width="match_parent"
         android:layout_height="@dimen/my_fragment_height"
+        android:visibility="gone"
         android:orientation="horizontal">
         <TextView
             style="@style/my_fragment_item"
@@ -35,6 +48,7 @@
         android:id="@+id/ll_auto"
         android:layout_width="match_parent"
         android:layout_height="@dimen/my_fragment_height"
+        android:visibility="gone"
         android:orientation="horizontal">
         <TextView
             style="@style/my_fragment_item"
@@ -45,6 +59,7 @@
         android:id="@+id/ll_version"
         android:layout_width="match_parent"
         android:layout_height="@dimen/my_fragment_height"
+        android:visibility="gone"
         android:orientation="horizontal">
         <TextView
             style="@style/my_fragment_item"
@@ -54,6 +69,7 @@
         android:id="@+id/ll_suggest"
         android:layout_width="match_parent"
         android:layout_height="@dimen/my_fragment_height"
+        android:visibility="gone"
         android:orientation="horizontal">
         <TextView
             style="@style/my_fragment_item"

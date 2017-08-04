@@ -18,6 +18,7 @@ import com.cangjie.mayday.R;
 import com.cangjie.mayday.domain.PerCost;
 import com.cangjie.mayday.domain.TimeLineDayElement;
 import com.cangjie.mayday.ui.AddBillActivity;
+import com.cangjie.mayday.utils.RoundNumberUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -64,16 +65,9 @@ public class PieDetailAdapter extends RecyclerView.Adapter<PieDetailAdapter.PieD
         Date date = bill.getDate();
 
         holder.tv_type.setText(mFormat.format(date));
-        holder.tv_money.setText(mContext.getResources().getString(R.string.format_yuan, String.valueOf(bill.getMoney())));
+        String money = RoundNumberUtils.transformMoneyString(bill.getMoney());
+        holder.tv_money.setText(mContext.getResources().getString(R.string.format_yuan, money));
     }
-//
-//    private String typeName(int billType) {
-//        for(BillType type : mBillTypeList){
-//            if (type.getTypeId() == billType)
-//                return type.getTypeName();
-//        }
-//        return null;
-//    }
 
     @Override
     public int getItemCount() {

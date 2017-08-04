@@ -16,6 +16,7 @@ import com.cangjie.mayday.R;
 import com.cangjie.mayday.domain.PerCost;
 import com.cangjie.mayday.domain.TimeLineDayElement;
 import com.cangjie.mayday.ui.AddBillActivity;
+import com.cangjie.mayday.utils.RoundNumberUtils;
 
 import java.util.List;
 
@@ -69,12 +70,14 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.TimeLi
             TextView tv_money = (TextView) view.findViewById(R.id.tv_money);
             String typeName = typeName(perCost.getCostType());
             tv_type.setText(typeName);
-            tv_money.setText(String.valueOf(perCost.getCostMoney()) + "元");
+            String money = RoundNumberUtils.transformMoneyString(perCost.getCostMoney());
+            tv_money.setText(mActivity.getResources().getString(R.string.format_yuan, money));
             sumMoney += perCost.getCostMoney();
             holder.ll_container.addView(view);
 
         }
-        holder.tv_sum_money.setText(String.valueOf(sumMoney) + "元");
+        String sumMoneyStr = RoundNumberUtils.transformMoneyString(sumMoney);
+        holder.tv_sum_money.setText(mActivity.getResources().getString(R.string.format_yuan, sumMoneyStr));
     }
 
     private String typeName(long billType) {

@@ -28,7 +28,6 @@ public class TimeLinePresenter extends BasePresenter<TimeLineView> {
 
     private final Activity mActivity;
     private BillDao mBillDao;
-    private BillTypeDao mBillTypeDao;
     private final SimpleDateFormat mMonthDaySimpleDateFormat;
     private List<Bill> bills;
     private final SimpleDateFormat mYearMonthSimpleDateFormat;
@@ -37,7 +36,6 @@ public class TimeLinePresenter extends BasePresenter<TimeLineView> {
         super(mvpView);
         this.mActivity = activity;
         mBillDao = MyApplication.getInstances().getDaoSession().getBillDao();
-        mBillTypeDao = MyApplication.getInstances().getDaoSession().getBillTypeDao();
 
         mMonthDaySimpleDateFormat = new SimpleDateFormat("yyyyMMdd", Locale.CHINA);
         mYearMonthSimpleDateFormat = new SimpleDateFormat("yyyyMM", Locale.CHINA);

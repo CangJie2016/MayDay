@@ -9,27 +9,28 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.WelcomeActivity">
-
-        </activity>
+        <activity android:name=".ui.WelcomeActivity" />
+        <activity android:name=".ui.PasswordStoreActivity"/>
         <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter> </activity>
+            </intent-filter>
+        </activity>
         <activity android:name=".ui.AddBillActivity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity android:name=".ui.AlertBillTypeActivity" />
         <activity android:name=".ui.GoalActivity" />
-        <activity android:name=".ui.PieTestActivity"></activity>
-        <activity android:name=".ui.BillTypeDetailActivity"></activity>
+        <activity android:name=".ui.BillTypeDetailActivity" />
+        <activity android:name=".ui.PasswordDetailActivity"></activity>
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
 package com.cangjie.mayday.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -63,5 +64,10 @@ public class MyFragment extends BaseHeadFragment {
     @OnClick({R.id.ll_user_info, R.id.ll_credits_exchange,R.id.ll_activity,R.id.ll_auto,R.id.ll_version,R.id.ll_suggest})
     public void onItemClick(View view){
         ToastHelper.showToast("正在开发中", mContext);
+    }
+
+    @OnClick(R.id.ll_password_store)
+    public void passwordStore(){
+        startActivity(new Intent(getActivity(), PasswordStoreActivity.class));
     }
 }

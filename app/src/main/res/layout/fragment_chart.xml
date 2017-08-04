@@ -52,7 +52,7 @@
             android:layout_height="match_parent"
             android:visibility="gone"
             android:orientation="vertical">
-            <include layout="@layout/item_time_line"/>
+            <include layout="@layout/item_time_line_chart"/>
             <include layout="@layout/include_division"/>
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_pie_detail"
