@@ -6,20 +6,20 @@
     >
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp">
+        android:layout_height="80dp">
         <TextView
             android:id="@+id/tv_goal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="16dp"
             android:text="@string/time_line_goal"/>
         <TextView
             android:id="@+id/tv_cost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
             android:layout_below="@+id/tv_goal"
             android:text="@string/time_line_cost"/>
     </RelativeLayout>

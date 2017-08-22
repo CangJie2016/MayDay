@@ -3,11 +3,10 @@ package com.cangjie.mayday.presenter;
 import android.app.Activity;
 
 import com.anye.greendao.gen.BillDao;
-import com.anye.greendao.gen.BillTypeDao;
 import com.cangjie.basetool.mvp.BasePresenter;
 import com.cangjie.basetool.utils.SpUtils;
 import com.cangjie.data.entity.Bill;
-import com.cangjie.mayday.Constant;
+import com.cangjie.mayday.Constants;
 import com.cangjie.mayday.MyApplication;
 import com.cangjie.mayday.adapter.TimeLineAdapter;
 import com.cangjie.mayday.domain.PerCost;
@@ -53,8 +52,8 @@ public class TimeLinePresenter extends BasePresenter<TimeLineView> {
     }
 
     public void loadCurrentMonthGoal() {
-        String goalName = SpUtils.getCache(MyApplication.mContext, Constant.SpKey.GOAL_NAME);
-        String goalNum = SpUtils.getCache(MyApplication.mContext, Constant.SpKey.GOAL_NUM);
+        String goalName = SpUtils.getCache(MyApplication.mContext, Constants.SpKey.GOAL_NAME);
+        String goalNum = SpUtils.getCache(MyApplication.mContext, Constants.SpKey.GOAL_NUM);
         mvpView.currentMonthGoal(goalName, goalNum);
     }
 

@@ -11,12 +11,16 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.cangjie.basetool.mvp.base.BaseHeadFragment;
+import com.cangjie.basetool.utils.SpUtils;
 import com.cangjie.basetool.utils.ToastHelper;
+import com.cangjie.mayday.Constants;
 import com.cangjie.mayday.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static com.cangjie.mayday.presenter.CreateLockPresenter.CREATE_LOCK_SUCCESS;
 
 /**
  * Created by 李振强 on 2017/5/26.
@@ -68,6 +72,13 @@ public class MyFragment extends BaseHeadFragment {
 
     @OnClick(R.id.ll_password_store)
     public void passwordStore(){
-        startActivity(new Intent(getActivity(), PasswordStoreActivity.class));
+        boolean isLock = SpUtils.getCacheBoolean(mContext, CREATE_LOCK_SUCCESS);
+        Intent intent = new Intent();
+        if (isLock){
+            intent.setClass(getActivity(), CheckLockActivity.class);
+        }else{
+            intent.setClass(getActivity(), CreateLockActivity.class);
+        }
+        startActivity(intent);
     }
 }

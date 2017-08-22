@@ -2,17 +2,13 @@ package com.cangjie.mayday.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.afollestad.materialdialogs.DialogAction;
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.cangjie.basetool.mvp.base.PresenterActivity;
 import com.cangjie.basetool.utils.SpUtils;
-import com.cangjie.mayday.Constant;
+import com.cangjie.mayday.Constants;
 import com.cangjie.mayday.R;
 import com.cangjie.mayday.presenter.SetGoalPresenter;
 import com.cangjie.mayday.presenter.view.SetGoalView;
@@ -45,8 +41,8 @@ public class GoalActivity extends PresenterActivity<SetGoalPresenter> implements
         showBackButton();
         ButterKnife.bind(this);
 
-        String goalName = SpUtils.getCache(mContext, Constant.SpKey.GOAL_NAME);
-        String goalNum = SpUtils.getCache(mContext, Constant.SpKey.GOAL_NUM);
+        String goalName = SpUtils.getCache(mContext, Constants.SpKey.GOAL_NAME);
+        String goalNum = SpUtils.getCache(mContext, Constants.SpKey.GOAL_NUM);
         if (!TextUtils.isEmpty(goalName) && !TextUtils.isEmpty(goalNum)){
             et_goal_name.setText(goalName);
             et_need_money.setText(goalNum);
@@ -62,8 +58,8 @@ public class GoalActivity extends PresenterActivity<SetGoalPresenter> implements
             disPlay("请确认您所输入的参数");
             return;
         }
-        SpUtils.setCache(mContext, Constant.SpKey.GOAL_NAME, goalName);
-        SpUtils.setCache(mContext, Constant.SpKey.GOAL_NUM, goalNum);
+        SpUtils.setCache(mContext, Constants.SpKey.GOAL_NAME, goalName);
+        SpUtils.setCache(mContext, Constants.SpKey.GOAL_NUM, goalNum);
         sendRefreshBroadcast();
         finish();
     }

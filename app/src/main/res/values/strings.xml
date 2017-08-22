@@ -10,4 +10,32 @@
     <string name="format_year_month">%1$d年%2$d月</string>
 
     <string name="version">v%1$s</string>
+
+    <!-- 密码锁-->
+    <string name="lockscreen_access_pattern_start">"Draw an unlock pattern"</string>
+    <string name="lockscreen_access_pattern_cleared">"Pattern Ereased"</string>
+    <string name="lockscreen_access_pattern_cell_added">"已添加单元格"</string>
+    <string name="lockscreen_access_pattern_detected">"Pattern Saved"</string>
+    <string name="lockpattern_retry_button_text">"Retry"</string>
+    <string name="lockpattern_continue_button_text">"Continue"</string>
+    <string name="lockpattern_confirm_button_text">"Confirm"</string>
+    <string name="lockpattern_recording_intro_header">"Draw a pattern to unlock"</string>
+    <string name="lockpattern_settings_help_how_to_record">"How to draw an unlock pattern"</string>
+    <string name="lockpattern_recording_incorrect_too_short">"Connect at least 4 dots.Try agin."</string>
+    <string name="lockpattern_pattern_entered_header">"Pattern Recorded"</string>
+    <string name="lockpattern_need_to_confirm">"Draw pattern again to confirm"</string>
+    <string name="lockpattern_need_to_unlock_wrong">"Sorry,try again"</string>
+    <string name="lockpattern_pattern_confirmed_header">"Confirm saved pattern"</string>
+    <string name="lockpattern_recording_inprogress">"Release finger when done"</string>
+
+
+    <string name="create_activity_first">第一次使用，请先设置密码</string>
+    <string name="create_activity_warn">绘制解锁图案</string>
+    <string name="finger_press">完成后松开手指</string>
+    <string name="finger_up_first_error">至少连接4个点，请重试</string>
+    <string name="finger_up_first_success">请再次绘制解锁图案</string>
+    <string name="finger_up_second_error">与上次输入不一致，请重试</string>
+    <string name="finger_up_second_success">绘制成功</string>
+    <string name="check_default">请绘制手势密码，来解锁</string>
+    <string name="check_error">手势密码错误，请重试</string>
 </resources>

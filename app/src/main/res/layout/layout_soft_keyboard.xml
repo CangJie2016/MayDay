@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="240dp"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context="com.cangjie.mayday.ui.AddBillActivity">
 
     <EditText

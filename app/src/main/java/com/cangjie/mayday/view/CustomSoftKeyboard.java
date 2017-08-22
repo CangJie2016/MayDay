@@ -37,7 +37,7 @@ public class CustomSoftKeyboard extends LinearLayout {
 
     private static final int OPERATION_ADD = 1, OPERATION_MINUS = 2;
     private int currentOperation;
-    private String num1,num2;
+    private String num1, num2;
     private OnSoftKeyBoardListener mListener;
 
     public CustomSoftKeyboard(Context context) {
@@ -70,35 +70,44 @@ public class CustomSoftKeyboard extends LinearLayout {
 //        }
 //        et_money.setText();
     }
-    public void setOnSoftKeyBoardListener(OnSoftKeyBoardListener listener){
+
+    public void setOnSoftKeyBoardListener(OnSoftKeyBoardListener listener) {
         this.mListener = listener;
     }
 
     @OnClick(R.id.btn_soft_kb_point)
-    public void kb_point(){
+    public void kb_point() {
         et_money.getText().append(".");
     }
+
     @OnClick(R.id.btn_soft_kb_submit)
-    public void submit(){
+    public void submit() {
         String result = et_money.getText().toString();
         if (TextUtils.isEmpty(result))
             return;
-        Double aDouble = Double.valueOf(result);
-        if (mListener != null){
+        Double aDouble = 0.0;
+        try {
+            aDouble = Double.valueOf(result);
+        } catch (Exception e) {
+
+        }
+        if (mListener != null) {
             mListener.onClickSubmitListener(aDouble);
-        }else{
+        } else {
 //            throw new RuntimeException("listener can not be null");
         }
     }
+
     @OnClick(R.id.btn_soft_kb_back)
-    public void back(){
-        if(et_money.getText().toString().length() == 0)
+    public void back() {
+        if (et_money.getText().toString().length() == 0)
             return;
-        et_money.getText().delete(et_money.getText().length()-1, et_money.getText().length());
+        et_money.getText().delete(et_money.getText().length() - 1, et_money.getText().length());
     }
+
     @OnClick({R.id.btn_soft_kb_add, R.id.btn_soft_kb_minus})
-    public void softKeyboardInputOperation(View view){
-        switch (view.getId()){
+    public void softKeyboardInputOperation(View view) {
+        switch (view.getId()) {
             case R.id.btn_soft_kb_add:
                 operator(OPERATION_ADD);
                 break;
@@ -110,28 +119,28 @@ public class CustomSoftKeyboard extends LinearLayout {
 
     private void operator(int operation) {
         // 判断第二个数是否有内容， 如果没有，则不管，如果有，则num1 num2进行加减后归到num1中
-        if (!TextUtils.isEmpty(num2)){
+        if (!TextUtils.isEmpty(num2)) {
             calculate();
-        }else{
+        } else {
             // 还没处于计算中
-            if (!isOperation){
+            if (!isOperation) {
                 // 设置当前符号
                 currentOperation = operation;
                 isOperation = true;
-                if(currentOperation == OPERATION_ADD)
+                if (currentOperation == OPERATION_ADD)
                     et_money.getText().append("+");
-                else if(currentOperation == OPERATION_MINUS)
+                else if (currentOperation == OPERATION_MINUS)
                     et_money.getText().append("-");
-            }else{
+            } else {
                 //正在计算中
             }
         }
     }
 
     @OnClick(R.id.btn_soft_kb_calculate)
-    public void calculate(){
+    public void calculate() {
         double result = 0;
-        switch (currentOperation){
+        switch (currentOperation) {
             case OPERATION_ADD:
                 result = Double.valueOf(num1) + Double.valueOf(num2);
                 break;
@@ -143,11 +152,11 @@ public class CustomSoftKeyboard extends LinearLayout {
         et_money.setText(num1);
     }
 
-    @OnClick({R.id.btn_soft_kb_0,R.id.btn_soft_kb_1,R.id.btn_soft_kb_2,R.id.btn_soft_kb_3,R.id.btn_soft_kb_4,R.id.btn_soft_kb_5,
-            R.id.btn_soft_kb_6,R.id.btn_soft_kb_7,R.id.btn_soft_kb_8,R.id.btn_soft_kb_9})
-    public void softKeyboard(View view){
+    @OnClick({R.id.btn_soft_kb_0, R.id.btn_soft_kb_1, R.id.btn_soft_kb_2, R.id.btn_soft_kb_3, R.id.btn_soft_kb_4, R.id.btn_soft_kb_5,
+            R.id.btn_soft_kb_6, R.id.btn_soft_kb_7, R.id.btn_soft_kb_8, R.id.btn_soft_kb_9})
+    public void softKeyboard(View view) {
         int lastInputKey = 0;
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btn_soft_kb_0:
                 lastInputKey = 0;
                 break;
@@ -186,7 +195,7 @@ public class CustomSoftKeyboard extends LinearLayout {
         et_money.setText(String.valueOf(costMoney));
     }
 
-    public interface OnSoftKeyBoardListener{
+    public interface OnSoftKeyBoardListener {
         void onClickSubmitListener(double d);
     }
 }
