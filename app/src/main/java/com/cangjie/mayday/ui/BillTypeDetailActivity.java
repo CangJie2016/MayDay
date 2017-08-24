@@ -7,11 +7,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.anye.greendao.gen.BillDao;
 import com.anye.greendao.gen.BillTypeDao;
 import com.cangjie.basetool.utils.DebugLog;
 import com.cangjie.data.entity.BillType;
 import com.cangjie.mayday.MyApplication;
 import com.cangjie.mayday.R;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -75,6 +80,7 @@ public class BillTypeDetailActivity extends AppCompatActivity {
         refreshTypeBroadcast();
         finish();
     }
+
 
     public void refreshTypeBroadcast(){
         sendBroadcast(new Intent(REFRESH_TYPE_ACTION));

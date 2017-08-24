@@ -39,7 +39,8 @@ public class CheckLockActivity extends PresenterActivity<CheckLockPresenter> imp
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_lock);
         ButterKnife.bind(this);
-        hideHeadArea();
+        showBackButton();
+        showTitle("解锁");
         tvTips.setText(mContext.getString(R.string.check_default));
         mLockPatternView.setOnPatternListener(this);
     }

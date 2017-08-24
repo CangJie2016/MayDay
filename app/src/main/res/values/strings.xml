@@ -38,4 +38,7 @@
     <string name="finger_up_second_success">绘制成功</string>
     <string name="check_default">请绘制手势密码，来解锁</string>
     <string name="check_error">手势密码错误，请重试</string>
+
+
+    <string name="contact">由于本软件为零权限软件，遇到使用上的疑问和建议可直接与开发者联系\n\n\n群名称：简记交流群\n群   号：534256953</string>
 </resources>

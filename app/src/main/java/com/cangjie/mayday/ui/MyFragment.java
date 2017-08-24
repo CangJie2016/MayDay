@@ -81,4 +81,10 @@ public class MyFragment extends BaseHeadFragment {
         }
         startActivity(intent);
     }
+    @OnClick(R.id.ll_help)
+    public void help(){
+        Intent intent = new Intent();
+        intent.setClass(getActivity(), HelpActivity.class);
+        startActivity(intent);
+    }
 }

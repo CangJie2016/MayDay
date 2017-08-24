@@ -23,6 +23,16 @@
     </LinearLayout>
     <include layout="@layout/include_division"/>
     <LinearLayout
+        android:id="@+id/ll_help"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/my_fragment_height"
+        android:orientation="horizontal">
+        <TextView
+            style="@style/my_fragment_item"
+            android:text="使用帮助"/>
+    </LinearLayout>
+    <include layout="@layout/include_division"/>
+    <LinearLayout
         android:id="@+id/ll_credits_exchange"
         android:layout_width="match_parent"
         android:layout_height="@dimen/my_fragment_height"
