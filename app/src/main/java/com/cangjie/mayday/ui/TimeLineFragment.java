@@ -36,6 +36,8 @@ public class TimeLineFragment extends PresenterFragment<TimeLinePresenter> imple
     TextView tv_cost;
     @Bind(R.id.tv_goal)
     TextView tv_goal;
+    @Bind(R.id.tv_empty_tips)
+    TextView tv_empty_tips;
 
     Context mContext;
     public static final String TIMELINE_ACTION = "com.cangjie.mayday.timeline_refresh";
@@ -134,6 +136,13 @@ public class TimeLineFragment extends PresenterFragment<TimeLinePresenter> imple
 
     @Override
     public void moneyTimeLineData(TimeLineAdapter list) {
-        rv_timeline.setAdapter(list);
+        if (list.getItemCount() == 0){
+            tv_empty_tips.setVisibility(View.VISIBLE);
+            rv_timeline.setVisibility(View.GONE);
+        }else{
+            tv_empty_tips.setVisibility(View.GONE);
+            rv_timeline.setVisibility(View.VISIBLE);
+            rv_timeline.setAdapter(list);
+        }
     }
 }

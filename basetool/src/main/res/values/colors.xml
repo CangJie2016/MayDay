@@ -9,7 +9,7 @@
     <color name="main_tab_button_normal">#222222</color>
 
     <color name="white">#FFFFFF</color>
-    <color name="division_color">#e4e4e4</color>
+    <color name="division_color">#D3D3D3</color>
     <color name="transparent">@android:color/transparent</color>
     <color name="font_black">#6a6a6a</color>
 

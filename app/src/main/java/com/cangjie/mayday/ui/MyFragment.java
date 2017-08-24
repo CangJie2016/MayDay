@@ -87,4 +87,16 @@ public class MyFragment extends BaseHeadFragment {
         intent.setClass(getActivity(), HelpActivity.class);
         startActivity(intent);
     }
+    @OnClick(R.id.ll_tips)
+    public void tips(){
+        Intent intent = new Intent();
+        intent.setClass(getActivity(), PayActivity.class);
+        startActivity(intent);
+    }
+    @OnClick(R.id.ll_app)
+    public void explain(){
+        Intent intent = new Intent();
+        intent.setClass(getActivity(), ExplainActivity.class);
+        startActivity(intent);
+    }
 }

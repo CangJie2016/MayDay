@@ -39,7 +39,7 @@
         <activity android:name=".ui.GoalActivity" />
         <activity android:name=".ui.BillTypeDetailActivity" />
         <activity android:name=".ui.PasswordDetailActivity" />
-        <activity android:name=".ui.CreateLockActivity"></activity>
+        <activity android:name=".ui.CreateLockActivity" />
         <activity android:name=".ui.CheckLockActivity">
 
             <!-- <intent-filter> -->
@@ -49,7 +49,11 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
-        <activity android:name=".ui.HelpActivity"></activity>
+        <activity android:name=".ui.HelpActivity" />
+        <activity android:name=".ui.PayActivity" />
+        <activity android:name=".ui.AliPayActivity" />
+        <activity android:name=".ui.WxPayActivity" />
+        <activity android:name=".ui.ExplainActivity"></activity>
     </application>
 
 </manifest>

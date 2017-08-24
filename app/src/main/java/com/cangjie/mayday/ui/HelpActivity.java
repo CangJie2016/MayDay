@@ -1,5 +1,7 @@
 package com.cangjie.mayday.ui;
 
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -45,6 +47,16 @@ public class HelpActivity extends BaseHeadActivity {
                 if (count == 7){
                     container.setVisibility(View.VISIBLE);
                 }
+            }
+        });
+        tv_show.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                ClipboardManager clipboard =
+                        (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                clipboard.setText("534256953");
+                disPlay("群号复制成功！！");
+                return false;
             }
         });
     }

@@ -24,8 +24,20 @@
             android:text="@string/time_line_cost"/>
     </RelativeLayout>
     <include layout="@layout/include_division"/>
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_timeline"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_timeline"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:id="@+id/tv_empty_tips"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="点我试试添加账单吧！\n                                           ( ﾟ∀ﾟ) ﾉ♡\n↓\n↓\n↓\n↓\n↓"
+            android:textSize="16sp"
+            android:textColor="@color/theme_color_2_normal"
+            android:gravity="center_horizontal|bottom"/>
+    </FrameLayout>
 </LinearLayout>
