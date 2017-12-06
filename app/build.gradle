@@ -5,10 +5,10 @@ android {
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.cangjie.mayday"
-        minSdkVersion 17
+        minSdkVersion 19
         targetSdkVersion 25
-        versionCode 6
-        versionName "1.2.4"
+        versionCode 8
+        versionName "1.2.8"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -17,6 +17,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    signingConfigs {
+        release {
+            storeFile file("lzq.jks")
+            storePassword "lzq123456"
+            keyAlias "key"
+            keyPassword "key666666"
+        }
+
+        debug {
+            storeFile file("debug.keystore")
+            storePassword "android"
+        }
+    }
+
 }
 
 dependencies {

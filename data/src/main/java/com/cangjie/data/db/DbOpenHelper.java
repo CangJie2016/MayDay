@@ -32,17 +32,17 @@ public class DbOpenHelper extends DaoMaster.OpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.w("Log", oldVersion + "oldVersion");
-        if (oldVersion <= 2){
-            db.execSQL("CREATE TABLE " + "\"PASSWORD\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
-                "\"TITLE\" TEXT," + // 1: title
-                "\"USERNAME\" TEXT," + // 2: username
-                "\"PASSWORD\" TEXT," + // 3: password
-                "\"REMARKS\" TEXT," + // 4: remarks
-                "\"DATE\" INTEGER," + // 5: date
-                "\"IS_DELE\" INTEGER NOT NULL );"); // 6: isDele
-        }
+//        Log.w("Log", oldVersion + "oldVersion");
+//        if (oldVersion <= 2){
+//            db.execSQL("CREATE TABLE " + "\"PASSWORD\" (" + //
+//                "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
+//                "\"TITLE\" TEXT," + // 1: title
+//                "\"USERNAME\" TEXT," + // 2: username
+//                "\"PASSWORD\" TEXT," + // 3: password
+//                "\"REMARKS\" TEXT," + // 4: remarks
+//                "\"DATE\" INTEGER," + // 5: date
+//                "\"IS_DELE\" INTEGER NOT NULL );"); // 6: isDele
+//        }
         super.onUpgrade(db, oldVersion, newVersion);
 
     }

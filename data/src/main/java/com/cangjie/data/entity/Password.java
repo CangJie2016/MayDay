@@ -37,6 +37,11 @@ public class Password {
     public Password() {
     }
 
+    @Override
+    public String toString() {
+        return id + "," + title + "," + username + "," + password + "," + remarks + "," + date.getTime() + "," + isDele ;
+    }
+
     public Long getId() {
         return id;
     }
@@ -92,5 +97,6 @@ public class Password {
     public void setIsDele(int isDele) {
         this.isDele = isDele;
     }
+
 
 }

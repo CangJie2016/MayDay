@@ -131,4 +131,9 @@ public class PasswordStoreActivity extends PresenterActivity<PasswordStorePresen
         if (refreshDataBroadcast != null)
             unregisterReceiver(refreshDataBroadcast);
     }
+
+    @OnClick(R.id.btn_export)
+    public void export(){
+        mPresenter.export();
+    }
 }

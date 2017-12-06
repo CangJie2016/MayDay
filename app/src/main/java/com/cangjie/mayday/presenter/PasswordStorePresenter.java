@@ -10,6 +10,7 @@ import com.cangjie.data.entity.Password;
 import com.cangjie.mayday.MyApplication;
 import com.cangjie.mayday.adapter.PasswordStoreAdapter;
 import com.cangjie.mayday.presenter.view.PasswordStoreView;
+import com.cangjie.mayday.utils.LogUtil;
 
 import java.util.List;
 
@@ -50,5 +51,14 @@ public class PasswordStorePresenter extends BasePresenter<PasswordStoreView> {
     private void showData() {
         passwordStoreAdapter = new PasswordStoreAdapter(mActivity, passwords);
         mvpView.showData(passwordStoreAdapter);
+    }
+
+    public void export(){
+        List<Password> datas = mPasswordDao.queryBuilder().list();
+        StringBuffer sb = new StringBuffer();
+        for (Password data : datas){
+            sb.append(data.toString() + "\r\n");
+        }
+        LogUtil.export(sb.toString());
     }
 }

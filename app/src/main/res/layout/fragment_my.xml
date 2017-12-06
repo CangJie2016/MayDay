@@ -21,6 +21,17 @@
             style="@style/my_fragment_item"
             android:text="账号仓库"/>
     </LinearLayout>
+
+    <include layout="@layout/include_division"/>
+    <LinearLayout
+        android:id="@+id/ll_import"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/my_fragment_height"
+        android:orientation="horizontal">
+        <TextView
+            style="@style/my_fragment_item"
+            android:text="数据导入"/>
+    </LinearLayout>
     <include layout="@layout/include_division"/>
     <LinearLayout
         android:id="@+id/ll_help"

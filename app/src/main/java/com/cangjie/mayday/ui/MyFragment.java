@@ -5,21 +5,36 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.anye.greendao.gen.PasswordDao;
 import com.cangjie.basetool.mvp.base.BaseHeadFragment;
 import com.cangjie.basetool.utils.SpUtils;
 import com.cangjie.basetool.utils.ToastHelper;
+import com.cangjie.data.entity.Password;
 import com.cangjie.mayday.Constants;
+import com.cangjie.mayday.MyApplication;
 import com.cangjie.mayday.R;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.util.Date;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static com.anye.greendao.gen.PasswordDao.Properties.Password;
 import static com.cangjie.mayday.presenter.CreateLockPresenter.CREATE_LOCK_SUCCESS;
 
 /**
@@ -65,38 +80,84 @@ public class MyFragment extends BaseHeadFragment {
 
     }
 
-    @OnClick({R.id.ll_user_info, R.id.ll_credits_exchange,R.id.ll_activity,R.id.ll_auto,R.id.ll_version,R.id.ll_suggest})
-    public void onItemClick(View view){
+    @OnClick({R.id.ll_user_info, R.id.ll_credits_exchange, R.id.ll_activity, R.id.ll_auto, R.id.ll_version, R.id.ll_suggest})
+    public void onItemClick(View view) {
         ToastHelper.showToast("正在开发中", mContext);
     }
 
     @OnClick(R.id.ll_password_store)
-    public void passwordStore(){
+    public void passwordStore() {
         boolean isLock = SpUtils.getCacheBoolean(mContext, CREATE_LOCK_SUCCESS);
         Intent intent = new Intent();
-        if (isLock){
+        if (isLock) {
             intent.setClass(getActivity(), CheckLockActivity.class);
-        }else{
+        } else {
             intent.setClass(getActivity(), CreateLockActivity.class);
         }
         startActivity(intent);
     }
+
     @OnClick(R.id.ll_help)
-    public void help(){
+    public void help() {
         Intent intent = new Intent();
         intent.setClass(getActivity(), HelpActivity.class);
         startActivity(intent);
     }
+
     @OnClick(R.id.ll_tips)
-    public void tips(){
+    public void tips() {
         Intent intent = new Intent();
         intent.setClass(getActivity(), PayActivity.class);
         startActivity(intent);
     }
+
     @OnClick(R.id.ll_app)
-    public void explain(){
+    public void explain() {
         Intent intent = new Intent();
         intent.setClass(getActivity(), ExplainActivity.class);
         startActivity(intent);
     }
+
+    @OnClick(R.id.ll_import)
+    public void importData() {
+        String path = Environment.getExternalStorageDirectory() + "/export.txt";
+        readFileByLines(path);
+    }
+
+    /**
+     * 以行为单位读取文件，常用于读面向行的格式化文件
+     */
+    public static void readFileByLines(String fileName) {
+        BufferedReader reader = null;
+        try {
+            PasswordDao mPasswordDao = MyApplication.getInstances().getDaoSession().getPasswordDao();
+            File file = new File(fileName);
+            System.out.println("以行为单位读取文件内容，一次读一整行：");
+            reader = new BufferedReader(new FileReader(file));
+            String tempString = null;
+            int line = 1;
+            // 一次读入一行，直到读入null为文件结束
+            while ((tempString = reader.readLine()) != null) {
+                // 显示行号
+                String[] split = tempString.split(",");
+                Long time = Long.valueOf(split[5]);
+                com.cangjie.data.entity.Password password = new Password(null, split[1], split[2], split[3], split[4], new Date(time), Integer.valueOf(split[6]));
+                mPasswordDao.insert(password);
+                line++;
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            ToastHelper.showToast("出错了：" + e.getMessage(), MyApplication.mContext);
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e1) {
+                }
+            }
+        }
+    }
+
+
 }
