@@ -2,7 +2,7 @@ package com.cangjie.mayday.adapter;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,9 +18,10 @@ import com.cangjie.mayday.domain.TimeLineDayElement;
 import com.cangjie.mayday.ui.AddBillActivity;
 import com.cangjie.mayday.utils.RoundNumberUtils;
 
+import java.math.BigDecimal;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -55,7 +56,7 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.TimeLi
         final TimeLineDayElement element = mData.get(position);
         String monthDay = element.getDate().substring(4);
         holder.tv_date.setText(Integer.valueOf(monthDay.substring(0,2))+"月" + Integer.valueOf(monthDay.substring(2,4))+"日");
-        double sumMoney = 0;
+        BigDecimal sumMoney = new BigDecimal("0");
         for (final PerCost perCost : element.getCostList()){
             View view = mLayoutInflater.inflate(R.layout.item_time_line2,holder.ll_container,false);
             view.setOnClickListener(new View.OnClickListener() {
@@ -72,11 +73,11 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.TimeLi
             tv_type.setText(typeName);
             String money = RoundNumberUtils.transformMoneyString(perCost.getCostMoney());
             tv_money.setText(mActivity.getResources().getString(R.string.format_yuan, money));
-            sumMoney += perCost.getCostMoney();
+            sumMoney = sumMoney.add(new BigDecimal(String.valueOf(perCost.getCostMoney())));
             holder.ll_container.addView(view);
 
         }
-        String sumMoneyStr = RoundNumberUtils.transformMoneyString(sumMoney);
+        String sumMoneyStr = RoundNumberUtils.transformMoneyString(sumMoney.doubleValue());
         holder.tv_sum_money.setText(mActivity.getResources().getString(R.string.format_yuan, sumMoneyStr));
     }
 
@@ -99,11 +100,11 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.TimeLi
     }
 
     public class TimeLineViewHolder extends RecyclerView.ViewHolder{
-        @Bind(R.id.tv_date)
+        @BindView(R.id.tv_date)
         TextView tv_date;
-        @Bind(R.id.tv_sum_money)
+        @BindView(R.id.tv_sum_money)
         TextView tv_sum_money;
-        @Bind(R.id.ll_container)
+        @BindView(R.id.ll_container)
         LinearLayout ll_container;
         public TimeLineViewHolder(View itemView) {
             super(itemView);

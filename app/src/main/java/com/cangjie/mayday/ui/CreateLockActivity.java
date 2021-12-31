@@ -13,14 +13,14 @@ import com.cangjie.mayday.view.LockPatternView;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class CreateLockActivity extends PresenterActivity<CreateLockPresenter> implements CreateLockView, LockPatternView.OnPatternListener {
 
-    @Bind(R.id.lockPatternView)
+    @BindView(R.id.lockPatternView)
     LockPatternView mLockPatternView;
-    @Bind(R.id.tv_show)
+    @BindView(R.id.tv_show)
     TextView tvTips;
     private int mode;
 

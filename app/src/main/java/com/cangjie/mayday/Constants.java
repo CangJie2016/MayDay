@@ -13,5 +13,6 @@ public class Constants {
         public static final String INIT_BILL_TYPE = "bill_type";
         public static final String GOAL_NAME = "goal_name";
         public static final String GOAL_NUM = "goal_num";
+        public static final String IS_READ = "is_read";
     }
 }

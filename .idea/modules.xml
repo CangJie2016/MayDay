@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MPChartLib/MPChartLib.iml" filepath="$PROJECT_DIR$/MPChartLib/MPChartLib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/MayDay.iml" filepath="$PROJECT_DIR$/MayDay.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/basetool/basetool.iml" filepath="$PROJECT_DIR$/basetool/basetool.iml" />
-      <module fileurl="file://$PROJECT_DIR$/data/data.iml" filepath="$PROJECT_DIR$/data/data.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MayDay.iml" filepath="$PROJECT_DIR$/.idea/modules/MayDay.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MPChartLib/MayDay.MPChartLib.iml" filepath="$PROJECT_DIR$/.idea/modules/MPChartLib/MayDay.MPChartLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MayDay.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MayDay.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/basetool/MayDay.basetool.iml" filepath="$PROJECT_DIR$/.idea/modules/basetool/MayDay.basetool.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/data/MayDay.data.iml" filepath="$PROJECT_DIR$/.idea/modules/data/MayDay.data.iml" />
     </modules>
   </component>
 </project>

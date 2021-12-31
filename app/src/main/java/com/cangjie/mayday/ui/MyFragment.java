@@ -11,6 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.anye.greendao.gen.PasswordDao;
 import com.cangjie.basetool.mvp.base.BaseHeadFragment;
 import com.cangjie.basetool.utils.SpUtils;
@@ -30,7 +34,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.Date;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -45,7 +49,7 @@ public class MyFragment extends BaseHeadFragment {
     private View rootView;
     Context mContext;
 
-    @Bind(R.id.tv_version)
+    @BindView(R.id.tv_version)
     TextView tv_version;
 
     @Override
@@ -120,8 +124,29 @@ public class MyFragment extends BaseHeadFragment {
 
     @OnClick(R.id.ll_import)
     public void importData() {
-        String path = Environment.getExternalStorageDirectory() + "/export.txt";
-        readFileByLines(path);
+        new MaterialDialog.Builder(getContext())
+                .title("账号仓库")
+                .content("请确认是否要导入目录下的export.txt文件？导入后请注意删除该文件")
+                .positiveText("确认导入")
+                .negativeText("取消")
+                .canceledOnTouchOutside(false)
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        dialog.dismiss();
+                        String path = Environment.getExternalStorageDirectory() + "/export.txt";
+                        readFileByLines(path);
+                        ToastHelper.showToast("账号仓库已成功导入，请查看", getContext());
+                    }
+                })
+                .onNegative(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+
+                        dialog.dismiss();
+                    }
+                })
+                .show();
     }
 
     /**

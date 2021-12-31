@@ -5,24 +5,33 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.cangjie.basetool.mvp.base.PresenterActivity;
 import com.cangjie.basetool.utils.DebugLog;
 import com.cangjie.mayday.Constants;
+import com.cangjie.mayday.HomeEvent;
 import com.cangjie.mayday.R;
 import com.cangjie.mayday.adapter.PasswordStoreAdapter;
 import com.cangjie.mayday.presenter.PasswordStorePresenter;
 import com.cangjie.mayday.presenter.view.PasswordStoreView;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
 import java.util.concurrent.TimeUnit;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.Subscriber;
@@ -33,7 +42,7 @@ public class PasswordStoreActivity extends PresenterActivity<PasswordStorePresen
 
     private RecyclerView rv_password_store;
     private RefreshTypeBroadcast refreshDataBroadcast;
-    @Bind(R.id.et_key)
+    @BindView(R.id.et_key)
     EditText et_key;
 
     @Override
@@ -46,6 +55,7 @@ public class PasswordStoreActivity extends PresenterActivity<PasswordStorePresen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password_store);
         ButterKnife.bind(this);
+        EventBus.getDefault().register(this);
         showTitle("账号仓库");
         showBackButton();
         showRightImageButton(R.drawable.btn_lock, new View.OnClickListener() {
@@ -134,6 +144,31 @@ public class PasswordStoreActivity extends PresenterActivity<PasswordStorePresen
 
     @OnClick(R.id.btn_export)
     public void export(){
-        mPresenter.export();
+        new MaterialDialog.Builder(this)
+                .title("温馨提示")
+                .content("请确认是否导出账号数据？")
+                .positiveText("确认导出")
+                .negativeText("取消")
+                .canceledOnTouchOutside(false)
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        dialog.dismiss();
+                        mPresenter.export();
+                    }
+                })
+                .onNegative(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+
+                        dialog.dismiss();
+                    }
+                })
+                .show();
+    }
+
+    @Subscribe
+    public void homePage(HomeEvent event){
+        finish();
     }
 }

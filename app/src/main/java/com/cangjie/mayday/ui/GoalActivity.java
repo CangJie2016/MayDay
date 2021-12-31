@@ -13,16 +13,16 @@ import com.cangjie.mayday.R;
 import com.cangjie.mayday.presenter.SetGoalPresenter;
 import com.cangjie.mayday.presenter.view.SetGoalView;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class GoalActivity extends PresenterActivity<SetGoalPresenter> implements SetGoalView {
-    @Bind(R.id.btn_confirm)
+    @BindView(R.id.btn_confirm)
     Button btn_confirm;
-    @Bind(R.id.et_goal_name)
+    @BindView(R.id.et_goal_name)
     EditText et_goal_name;
-    @Bind(R.id.et_need_money)
+    @BindView(R.id.et_need_money)
     EditText et_need_money;
 
 

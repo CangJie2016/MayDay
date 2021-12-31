@@ -13,26 +13,26 @@ import com.cangjie.mayday.R;
 import com.cangjie.mayday.presenter.PasswordDetailPresenter;
 import com.cangjie.mayday.presenter.view.PasswordDetailView;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 import static android.R.attr.password;
 
 public class PasswordDetailActivity extends PresenterActivity<PasswordDetailPresenter> implements PasswordDetailView {
-    @Bind(R.id.et_title)
+    @BindView(R.id.et_title)
     EditText et_title;
-    @Bind(R.id.et_userName)
+    @BindView(R.id.et_userName)
     EditText et_userName;
-    @Bind(R.id.et_password)
+    @BindView(R.id.et_password)
     EditText et_password;
-    @Bind(R.id.et_remarks)
+    @BindView(R.id.et_remarks)
     EditText et_remarks;
-    @Bind(R.id.btn_add)
+    @BindView(R.id.btn_add)
     Button btn_add;
-    @Bind(R.id.btn_update)
+    @BindView(R.id.btn_update)
     Button btn_update;
-    @Bind(R.id.btn_delete)
+    @BindView(R.id.btn_delete)
     Button btn_delete;
 
     public static final String REFRESH_PASSWORD_ACTION = "com.cangjie.refresh.password";

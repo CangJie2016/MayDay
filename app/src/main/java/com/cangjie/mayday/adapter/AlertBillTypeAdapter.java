@@ -1,7 +1,7 @@
 package com.cangjie.mayday.adapter;
 
 import android.content.Intent;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +14,7 @@ import com.cangjie.mayday.ui.BillTypeDetailActivity;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -61,7 +61,7 @@ public class AlertBillTypeAdapter extends RecyclerView.Adapter<AlertBillTypeAdap
     }
 
     public class BillTypeViewHolder extends RecyclerView.ViewHolder{
-        @Bind(R.id.tv_name)
+        @BindView(R.id.tv_name)
         TextView tv_name;
         public BillTypeViewHolder(View itemView) {
             super(itemView);

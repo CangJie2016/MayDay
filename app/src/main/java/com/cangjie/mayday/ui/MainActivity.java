@@ -1,15 +1,34 @@
 package com.cangjie.mayday.ui;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.os.Environment;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.anye.greendao.gen.BillTypeDao;
 import com.cangjie.basetool.mvp.base.PresenterActivity;
+import com.cangjie.basetool.utils.SpUtils;
 import com.cangjie.basetool.view.lazy_viewpager.CustomViewPager;
 import com.cangjie.basetool.view.lazy_viewpager.MyFragmentViewPagerAdapter;
+import com.cangjie.data.db.DbInit;
+import com.cangjie.mayday.Constants;
+import com.cangjie.mayday.MyApplication;
 import com.cangjie.mayday.R;
 import com.cangjie.mayday.presenter.MainPresenter;
 import com.cangjie.mayday.presenter.view.MainView;
@@ -17,37 +36,72 @@ import com.cangjie.mayday.presenter.view.MainView;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends PresenterActivity<MainPresenter> implements MainView {
+import static com.cangjie.mayday.Constants.SpKey.IS_READ;
 
-    @Bind(R.id.vp_main)
+public class MainActivity extends FragmentActivity implements MainView {
+
+    private static final int REQUEST_CODE = 1024;
+
+    @BindView(R.id.vp_main)
     public CustomViewPager mViewPager;
 
-    @Bind(R.id.rb_chart)
+    @BindView(R.id.rb_chart)
     public RadioButton rb_chart;
-    @Bind(R.id.rb_bill)
+    @BindView(R.id.rb_bill)
     public RadioButton rb_bill;
-    @Bind(R.id.rb_more)
+    @BindView(R.id.rb_more)
     public RadioButton rb_more;
-    @Bind(R.id.btn_pencil)
+    @BindView(R.id.btn_pencil)
     public Button btn_pencil;
-
-    @Override
-    protected MainPresenter createPresenter() {
-        return new MainPresenter(this);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        BillTypeDao mBillTypeDao = MyApplication.getInstances().getDaoSession().getBillTypeDao();
+        if (!SpUtils.getCacheBoolean(MyApplication.mContext, Constants.SpKey.INIT_BILL_TYPE)){
+            DbInit.init(mBillTypeDao);
+            SpUtils.setCache(MyApplication.mContext, Constants.SpKey.INIT_BILL_TYPE, true);
+        }
+
         ButterKnife.bind(this);
-        hideHeadArea();
         generateFragment();
+        requestPermission();
+
+        boolean isRead = SpUtils.getCacheBoolean(this, IS_READ);
+        if (!isRead){
+            showMustDialog();
+        }
+    }
+
+    private void showMustDialog() {
+        String privateContent = getString(R.string.private_content);
+        new MaterialDialog.Builder(this)
+                .title("隐私政策")
+                .content(privateContent)
+                .positiveText("同意")
+                .negativeText("不同意")
+                .canceledOnTouchOutside(false)
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        dialog.dismiss();
+                        SpUtils.setCache(MainActivity.this, IS_READ, true);
+                    }
+                })
+                .onNegative(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        dialog.dismiss();
+                        finish();
+                    }
+                })
+                .show();
     }
 
     public void generateFragment() {
@@ -58,7 +112,7 @@ public class MainActivity extends PresenterActivity<MainPresenter> implements Ma
         tabFragments.add(chartFragment);
         tabFragments.add(timeLineFragment);
         tabFragments.add(myFragment);
-        MyFragmentViewPagerAdapter mAdapter = new MyFragmentViewPagerAdapter(MainActivity.this.getSupportFragmentManager(), tabFragments);
+        MyFragmentViewPagerAdapter mAdapter = new MyFragmentViewPagerAdapter(getSupportFragmentManager(), tabFragments);
         setViewPagerAdapter(mAdapter);
     }
 
@@ -102,8 +156,63 @@ public class MainActivity extends PresenterActivity<MainPresenter> implements Ma
 
     @OnClick(R.id.btn_pencil)
     public void clickPencil(){
-        Intent intent = new Intent(mContext, AddBillActivity.class);
+        Intent intent = new Intent(this, AddBillActivity.class);
         startActivity(intent);
     }
 
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void disPlay(String s) {
+
+    }
+    private void requestPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            // 先判断有没有权限
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                // 先判断有没有权限
+                if (Environment.isExternalStorageManager()) {
+                } else {
+                    Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
+                    intent.setData(Uri.parse("package:" + this.getPackageName()));
+                    startActivityForResult(intent, REQUEST_CODE);
+                }
+            } else if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED &&
+                    ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+            } else {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE);
+            }
+        } else {
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_CODE) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED &&
+                    ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+            } else {
+                disPlay("获取权限失败");
+            }
+        }
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            if (Environment.isExternalStorageManager()) {
+            } else {
+                disPlay("获取权限失败");
+            }
+        }
+    }
 }

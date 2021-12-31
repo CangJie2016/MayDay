@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">@color/window_top_status_bar</color>
     <color name="colorPrimaryDark">@color/window_top_status_bar</color>
-    <color name="colorAccent">@color/main_tab_font_normal</color>
+    <color name="colorAccent">@color/window_top_status_bar</color>
 
 
     <color name="time_line_item_normal">@color/transparent</color>
@@ -20,5 +20,8 @@
 
     <color name="time_line_item_background_gray">#aaf0f0f0</color>
     <color name="text_red">#ffff4081</color>
+
+    <color name="main_tab_button_select">#3a3a3a</color>
+    <color name="main_tab_button_normal">#222222</color>
 
 </resources>

@@ -5,9 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.cangjie.basetool.mvp.base.PresenterActivity;
 import com.cangjie.mayday.R;
@@ -16,12 +17,12 @@ import com.cangjie.mayday.presenter.AlertBillTypePresenter;
 import com.cangjie.mayday.presenter.view.AlertBillTypeView;
 import com.cangjie.mayday.view.DividerGridItemDecoration;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class AlertBillTypeActivity extends PresenterActivity<AlertBillTypePresenter> implements AlertBillTypeView {
 
-    @Bind(R.id.rv_bill_type)
+    @BindView(R.id.rv_bill_type)
     RecyclerView rv_bill_type;
     private RefreshTypeBroadcast refreshTypeBroadcast;
 

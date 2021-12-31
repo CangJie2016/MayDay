@@ -2,7 +2,7 @@ package com.cangjie.mayday.adapter;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +21,7 @@ import com.cangjie.mayday.ui.PasswordStoreActivity;
 import java.io.Serializable;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -73,17 +73,17 @@ public class PasswordStoreAdapter extends RecyclerView.Adapter<PasswordStoreAdap
     }
 
     public class PasswordStoreViewHolder extends RecyclerView.ViewHolder{
-        @Bind(R.id.ll_container)
+        @BindView(R.id.ll_container)
         LinearLayout ll_container;
-        @Bind(R.id.tv_title)
+        @BindView(R.id.tv_title)
         TextView tv_title;
-        @Bind(R.id.tv_username)
+        @BindView(R.id.tv_username)
         TextView tv_username;
-        @Bind(R.id.tv_password)
+        @BindView(R.id.tv_password)
         TextView tv_password;
-        @Bind(R.id.ll_remarks_container)
+        @BindView(R.id.ll_remarks_container)
         LinearLayout ll_remarks_container;
-        @Bind(R.id.tv_remarks)
+        @BindView(R.id.tv_remarks)
         TextView tv_remarks;
         public PasswordStoreViewHolder(View itemView) {
             super(itemView);

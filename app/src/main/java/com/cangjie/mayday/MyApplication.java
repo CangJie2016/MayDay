@@ -10,6 +10,8 @@ import com.cangjie.basetool.utils.DebugLog;
 import com.cangjie.data.db.DbOpenHelper;
 import com.facebook.stetho.Stetho;
 
+import org.greenrobot.eventbus.EventBus;
+
 /**
  * author：CangJie on 2016/9/28 14:45
  * email：cangjie2016@gmail.com
@@ -23,12 +25,16 @@ public class MyApplication extends Application {
     private DaoMaster mDaoMaster;
     private DaoSession mDaoSession;
     public static MyApplication instances;
+
+    private HomeKeyListener HomeKeyListener;
+
     @Override    public void onCreate() {
         super.onCreate();
         this.mContext = this;
         instances = this;
         setDatabase();
         Stetho.initializeWithDefaults(this);
+        initHomeKeyListener();
     }
     public static MyApplication getInstances(){
         return instances;
@@ -55,4 +61,27 @@ public class MyApplication extends Application {
         return db;
     }
 
+    private void initHomeKeyListener() {
+        HomeKeyListener = new HomeKeyListener(this);
+        HomeKeyListener.setOnHomePressedListener(new HomeKeyListener.OnHomePressedListener() {
+            @Override
+            public void onHomePressed() {
+                EventBus.getDefault().post(new HomeEvent());
+            }
+
+            @Override
+            public void onHomeLongPressed() {
+                EventBus.getDefault().post(new HomeEvent());
+            }
+        });
+        HomeKeyListener.startWatch();
+    }
+
+
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
+        HomeKeyListener.stopWatch();
+
+    }
 }

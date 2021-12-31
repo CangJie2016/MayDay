@@ -4,7 +4,7 @@ package com.cangjie.mayday.adapter;
  * Created by 李振强 on 2017/5/20.
  */
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,6 @@
 package com.cangjie.mayday.view;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -18,7 +17,7 @@ import com.facebook.stetho.common.LogUtil;
 
 import java.util.regex.Pattern;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -28,9 +27,9 @@ import butterknife.OnClick;
 
 public class CustomSoftKeyboard extends LinearLayout {
 
-    @Bind(R.id.et_money)
+    @BindView(R.id.et_money)
     EditText et_money;
-    @Bind(R.id.btn_soft_kb_calculate)
+    @BindView(R.id.btn_soft_kb_calculate)
     Button btn_soft_kb_operation;
 
     private boolean isOperation = false;

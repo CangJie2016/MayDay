@@ -1,14 +1,16 @@
 package com.cangjie.basetool.mvp.base;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.cangjie.basetool.utils.ToastHelper;
 
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends Activity {
     public Context mContext;
 
     @Override

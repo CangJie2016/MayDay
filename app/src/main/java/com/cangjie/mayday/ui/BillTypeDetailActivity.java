@@ -2,10 +2,11 @@ package com.cangjie.mayday.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.anye.greendao.gen.BillDao;
 import com.anye.greendao.gen.BillTypeDao;
@@ -18,7 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
@@ -26,13 +27,13 @@ public class BillTypeDetailActivity extends AppCompatActivity {
 
     private BillTypeDao mBillTypeDao;
     private long id;
-    @Bind(R.id.et_type_name)
+    @BindView(R.id.et_type_name)
     EditText et_type_name;
-    @Bind(R.id.btn_add)
+    @BindView(R.id.btn_add)
     Button btn_add;
-    @Bind(R.id.btn_save)
+    @BindView(R.id.btn_save)
     Button btn_save;
-    @Bind(R.id.btn_delete)
+    @BindView(R.id.btn_delete)
     Button btn_delete;
 
     public static final String REFRESH_TYPE_ACTION = "com.cangjie.refresh_type_action";

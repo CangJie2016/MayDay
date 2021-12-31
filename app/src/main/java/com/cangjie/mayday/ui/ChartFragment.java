@@ -6,8 +6,9 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,7 +41,7 @@ import com.github.mikephil.charting.utils.MPPointF;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -55,20 +56,20 @@ public class ChartFragment extends PresenterFragment<ChartPresenter> implements 
     private View rootView;
     Context mContext;
 
-    @Bind(R.id.pie_chart)
+    @BindView(R.id.pie_chart)
     PieChart mChart;
-    @Bind(R.id.rv_pie_detail)
+    @BindView(R.id.rv_pie_detail)
     RecyclerView rv_pie_detail;
-    @Bind(R.id.ll_pie_detail_container)
+    @BindView(R.id.ll_pie_detail_container)
     LinearLayout ll_pie_detail_container;
-    @Bind(R.id.tv_pie_detail_tips)
+    @BindView(R.id.tv_pie_detail_tips)
     TextView tv_pie_detail_tips;
-    @Bind(R.id.tv_date)
+    @BindView(R.id.tv_date)
     TextView tv_type;
-    @Bind(R.id.tv_sum_money)
+    @BindView(R.id.tv_sum_money)
     TextView tv_sum_money;
 
-    @Bind(R.id.tv_current_month)
+    @BindView(R.id.tv_current_month)
     TextView tv_current_month;
 
 

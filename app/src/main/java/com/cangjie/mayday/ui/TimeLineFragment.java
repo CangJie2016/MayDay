@@ -5,8 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +22,7 @@ import com.cangjie.mayday.adapter.TimeLineAdapter;
 import com.cangjie.mayday.presenter.TimeLinePresenter;
 import com.cangjie.mayday.presenter.view.TimeLineView;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -30,13 +31,13 @@ import butterknife.ButterKnife;
 
 public class TimeLineFragment extends PresenterFragment<TimeLinePresenter> implements TimeLineView {
     private View rootView;
-    @Bind(R.id.rv_timeline)
+    @BindView(R.id.rv_timeline)
     RecyclerView rv_timeline;
-    @Bind(R.id.tv_cost)
+    @BindView(R.id.tv_cost)
     TextView tv_cost;
-    @Bind(R.id.tv_goal)
+    @BindView(R.id.tv_goal)
     TextView tv_goal;
-    @Bind(R.id.tv_empty_tips)
+    @BindView(R.id.tv_empty_tips)
     TextView tv_empty_tips;
 
     Context mContext;

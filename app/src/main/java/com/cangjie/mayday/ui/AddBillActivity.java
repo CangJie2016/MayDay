@@ -5,9 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
@@ -26,16 +27,16 @@ import com.cangjie.mayday.view.DividerGridItemDecoration;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class AddBillActivity extends PresenterActivity<AddBillPresenter> implements AddBillView {
 
-    @Bind(R.id.rv_bill_type)
+    @BindView(R.id.rv_bill_type)
     RecyclerView rv_bill_type;
-    @Bind(R.id.et_remarks)
+    @BindView(R.id.et_remarks)
     EditText et_remarks;
-    @Bind(R.id.custom_kb)
+    @BindView(R.id.custom_kb)
     CustomSoftKeyboard custom_kb;
 
 
@@ -122,7 +123,7 @@ public class AddBillActivity extends PresenterActivity<AddBillPresenter> impleme
     public void add(double d) {
         String money = String.valueOf(d);
         String remarks = et_remarks.getText().toString();
-        if (TextUtils.isEmpty(money)) {
+        if (TextUtils.isEmpty(money) || d == 0) {
             disPlay("请填写正确的金额");
             return;
         }

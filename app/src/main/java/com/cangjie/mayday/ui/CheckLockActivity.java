@@ -15,7 +15,7 @@ import com.cangjie.mayday.view.LockPatternView;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -28,9 +28,9 @@ public class CheckLockActivity extends PresenterActivity<CheckLockPresenter> imp
         return new CheckLockPresenter(this, getApplicationContext());
     }
 
-    @Bind(R.id.lockPatternView)
+    @BindView(R.id.lockPatternView)
     LockPatternView mLockPatternView;
-    @Bind(R.id.tv_show)
+    @BindView(R.id.tv_show)
     TextView tvTips;
 
 

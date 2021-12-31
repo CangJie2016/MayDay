@@ -16,13 +16,13 @@ import com.cangjie.mayday.presenter.WelcomePresenter;
 import com.cangjie.mayday.presenter.view.WelcomeView;
 import com.cangjie.basetool.mvp.base.PresenterActivity;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx.Subscriber;
 
 public class WelcomeActivity extends PresenterActivity<WelcomePresenter> implements WelcomeView {
 
-    @Bind(R.id.img_welcome)
+    @BindView(R.id.img_welcome)
     ImageView imgWelcome;
 
     @Override

@@ -13,6 +13,7 @@ import com.cangjie.mayday.domain.PerCost;
 import com.cangjie.mayday.domain.TimeLineDayElement;
 import com.cangjie.mayday.presenter.view.TimeLineView;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -41,14 +42,14 @@ public class TimeLinePresenter extends BasePresenter<TimeLineView> {
     }
 
     public void loadCurrentMonthCost() {
-        double cost = 0.0;
+        BigDecimal cost = new BigDecimal("0");
         String currentYearMonth = mYearMonthSimpleDateFormat.format(new Date());
         for(Bill bill : bills){
             String yearMonth = mYearMonthSimpleDateFormat.format(bill.getDate());
             if (currentYearMonth.equals(yearMonth))
-                cost += bill.getMoney();
+                cost = cost.add(new BigDecimal(bill.getMoney().toString()));
         }
-        mvpView.currentMonthCost(cost);
+        mvpView.currentMonthCost(cost.doubleValue());
     }
 
     public void loadCurrentMonthGoal() {

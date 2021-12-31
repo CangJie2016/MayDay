@@ -2,8 +2,9 @@ package com.cangjie.basetool.view.recycle_view;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.cangjie.basetool.R;
 import com.jude.easyrecyclerview.EasyRecyclerView;

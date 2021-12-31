@@ -3,7 +3,7 @@ package com.cangjie.mayday.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +25,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static com.cangjie.mayday.R.id.tv_money;
@@ -80,11 +80,11 @@ public class PieDetailAdapter extends RecyclerView.Adapter<PieDetailAdapter.PieD
     }
 
     public class PieDetailViewHolder extends RecyclerView.ViewHolder{
-        @Bind(R.id.tv_money)
+        @BindView(R.id.tv_money)
         TextView tv_money;
-        @Bind(R.id.tv_type)
+        @BindView(R.id.tv_type)
         TextView tv_type;
-        @Bind(R.id.ll_container)
+        @BindView(R.id.ll_container)
         LinearLayout ll_container;
         public PieDetailViewHolder(View itemView) {
             super(itemView);
